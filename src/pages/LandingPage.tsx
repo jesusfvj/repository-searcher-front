@@ -1,5 +1,5 @@
 export const LandingPage = () => {
   return (
-    <div>LandingPage</div>
+    <div className="w-full h-full bg-[#0D1117]">LandingPage</div>
   )
 }

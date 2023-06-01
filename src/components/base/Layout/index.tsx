@@ -1,12 +1,12 @@
 import { useLocation } from "react-router-dom";
-import { NavBar } from "./NavBar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
-import { toastMessageError, toastMessageSuccess } from "../../../Utils/toaster";
 import { Loader } from "../Loader";
 import { Props } from "../../../interface/children";
 import { useUI } from "../../../context/UI/UIContext";
+import { toastMessageError, toastMessageSuccess } from "../../utils/toaster";
+import { NavBar } from "./NavBar";
 
 export const Layout = ({ children }: Props) => {
     const arrayExcludeLocations = ["/"]
@@ -36,23 +36,16 @@ export const Layout = ({ children }: Props) => {
 
     return (
         <>
-            {arrayExcludeLocations.includes(location.pathname)
-                ?
-                <>
-                    <div className="h-screen w-screen">
-                        {children}
-                    </div>
-                    <ToastContainer />
-                </>
-                :
-                <>
-                    <NavBar />
-                    <div className="min-h-[80vh] w-screen">
-                        {children}
-                    </div>
-                    <ToastContainer />
-                </>
-            }
+            <div className="h-screen w-screen">
+                {arrayExcludeLocations.includes(location.pathname) &&
+                    <div className="w-screen h-[9vh]">
+                        <NavBar />
+                    </div>}
+                <div className="w-screen h-full">
+                    {children}
+                </div>
+            </div>
+            <ToastContainer />
             {isLoading && <Loader modal={true} />}
         </>
     )
