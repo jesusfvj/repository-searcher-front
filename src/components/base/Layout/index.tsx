@@ -7,6 +7,7 @@ import { Props } from "../../../interface/children";
 import { useUI } from "../../../context/UI/UIContext";
 import { toastMessageError, toastMessageSuccess } from "../../utils/toaster";
 import { NavBar } from "./NavBar";
+import { WorkInProgress } from "../WorkInProgress";
 
 export const Layout = ({ children }: Props) => {
     const arrayExcludeLocations = ["/"]
@@ -16,6 +17,7 @@ export const Layout = ({ children }: Props) => {
         setMessageErrorToaster,
         messageSuccessToaster,
         messageErrorToaster,
+        showWorkInProgress,
         isLoading,
     } = useUI()
 
@@ -37,16 +39,17 @@ export const Layout = ({ children }: Props) => {
     return (
         <>
             <div className="h-screen w-screen">
-                {arrayExcludeLocations.includes(location.pathname) &&
+                {!arrayExcludeLocations.includes(location.pathname) &&
                     <div className="w-screen h-[9vh]">
                         <NavBar />
                     </div>}
-                <div className="w-screen h-full">
+                <div className="w-screen min-h-fit bg-[#0D1117]">
                     {children}
                 </div>
             </div>
             <ToastContainer />
             {isLoading && <Loader modal={true} />}
+            {showWorkInProgress && <WorkInProgress />}
         </>
     )
 }

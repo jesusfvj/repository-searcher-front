@@ -2,11 +2,11 @@ import { ReactNode } from "react";
 import "../../../index.css";
 
 interface Typography {
-	text: string | ReactNode;
-	type?: "title" | "subtitle" | "important" | "big" | "p0" | "p1" | "p2" | "p3" | "p4" ;
-	color?: "black" | "white" | "yellow" | "lightGreen" | "gray" | "darkGreen" | "ligthBlue" | "blue" | "transparent" | "danger";
-	family?: "system";
-	styles?: string;
+  text: string | ReactNode;
+  type?: "title" | "subtitle" | "important" | "big" | "p0" | "p1" | "p2" | "p5" | "p3" | "p4";
+  color?: "black" | "white" | "yellow" | "lightGreen" | "gray" | "darkGreen" | "ligthBlue" | "blue" | "transparent" | "danger";
+  family?: "system";
+  styles?: string;
   onClick?: () => void;
 }
 
@@ -27,13 +27,14 @@ export const Typography = ({
     p0: `text-lg sm:text-2xl font-normal`,
     p1: `text-md sm:text-xl font-normal`,
     p2: `text-sm sm:text-lg font-normal`,
-    p3: `text-xs sm:text-md font-normal`,
-    p4: `text-xs font-normal`,
+    p3: `text-sm sm:text-[0.9rem] font-normal`,
+    p4: `text-xs sm:text-md font-normal`,
+    p5: `text-xs font-normal`,
   };
 
   const colors: Record<string, string> = {
     black: "text-black",
-    white: "text-white",
+    white: "text-[#ffffff]",
     gray: "text-[#777E89]",
     searchFont: "text-[#C0C2C3]",
     blue: "text-[#2F81F7]",
@@ -43,7 +44,7 @@ export const Typography = ({
     system: "system"
   };
 
-  const finalClassName = `${types[type]} ${colors[color]} ${fontFamily[family]} ${styles} `;
+  const finalClassName = `${types[type]} ${colors[color]} ${fontFamily[family]} ${styles} transition duration-100`;
 
   switch (type) {
     case "p0":
@@ -51,6 +52,7 @@ export const Typography = ({
     case "p2":
     case "p3":
     case "p4":
+    case "p5":
     case "important":
     case "big":
       return <p className={finalClassName} onClick={onClick}>{text}</p>;
@@ -62,5 +64,3 @@ export const Typography = ({
       throw new Error(`Invalid typography type: ${type}`);
   }
 };
-
-/* transition duration-500 */

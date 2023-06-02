@@ -8,6 +8,8 @@ type UIContextType = {
   setMessageErrorToaster: (message: string) => void;
   setLoadingMessage: (loading: boolean) => void;
   setIsLoading: (isLoading: boolean) => void;
+  setShowWorkInProgress: (showWorkInProgress: boolean) => void;
+  showWorkInProgress: boolean;
   messageSuccessToaster: string;
   messageErrorToaster: string;
   loadingMessage: boolean;
@@ -19,21 +21,24 @@ export const useUI = (): UIContextType => {
   return state;
 };
 
-export const UIProvider = ({ children }:Props) => {
+export const UIProvider = ({ children }: Props) => {
   const [messageSuccessToaster, setMessageSuccessToaster] = useState<string>("");
   const [messageErrorToaster, setMessageErrorToaster] = useState<string>("");
   const [loadingMessage, setLoadingMessage] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showWorkInProgress, setShowWorkInProgress] = useState<boolean>(false);
 
   return (
     <UIContext.Provider
       value={{
         setMessageSuccessToaster,
         setMessageErrorToaster,
+        setShowWorkInProgress,
         setLoadingMessage,
         setIsLoading,
         messageSuccessToaster,
         messageErrorToaster,
+        showWorkInProgress,
         loadingMessage,
         isLoading,
       }}

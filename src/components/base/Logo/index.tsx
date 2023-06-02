@@ -11,7 +11,7 @@ interface LogoProps {
 export const Logo = ({type = "p0", color = "white"}:LogoProps): JSX.Element  => {
     return (
         <Typography
-            text={<BsGithub />}
+            text={<BsGithub className="hover:text-[#777E89] cursor-pointer"/>}
             type="big"
             color="white"
         />
