@@ -3,8 +3,8 @@ import "../../../index.css";
 
 interface Typography {
   text: string | ReactNode;
-  type?: "title" | "subtitle" | "important" | "big" | "p0" | "p1" | "p2" | "p5" | "p3" | "p4";
-  color?: "black" | "white" | "yellow" | "lightGreen" | "gray" | "darkGreen" | "ligthBlue" | "blue" | "transparent" | "danger";
+  type?: "title" | "subtitle" | "veryImportant" | "important" | "big" | "p0" | "p1" | "p2" | "p5" | "p3" | "p4";
+  color?: "black" | "white" | "gray" | "blue" | "danger" | "button";
   family?: "system";
   styles?: string;
   onClick?: () => void;
@@ -22,11 +22,12 @@ export const Typography = ({
   const types: Record<string, string> = {
     title: `text-xl sm:text-4xl font-bold`,
     subtitle: `text-2xl sm:text-6xl font-medium`,
+    veryImportant: `text-4xl sm:text-6xl font-bold`,
     important: `text-2xl sm:text-5xl font-bold`,
-    big: `text-xl sm:text-4xl font-bold`,
-    p0: `text-lg sm:text-2xl font-normal`,
-    p1: `text-md sm:text-xl font-normal`,
-    p2: `text-sm sm:text-lg font-normal`,
+    big: `text-2xl sm:text-4xl font-bold`,
+    p0: `text-xl sm:text-2xl font-normal`,
+    p1: `text-lg sm:text-xl font-normal`,
+    p2: `text-md sm:text-lg font-normal`,
     p3: `text-sm sm:text-[0.9rem] font-normal`,
     p4: `text-xs sm:text-md font-normal`,
     p5: `text-xs font-normal`,
@@ -38,6 +39,8 @@ export const Typography = ({
     gray: "text-[#777E89]",
     searchFont: "text-[#C0C2C3]",
     blue: "text-[#2F81F7]",
+    button: "text-[#C9D1D8]",
+    danger: "text-[#d93636]"
   };
 
   const fontFamily: Record<string, string> = {
@@ -54,6 +57,7 @@ export const Typography = ({
     case "p4":
     case "p5":
     case "important":
+    case "veryImportant":
     case "big":
       return <p className={finalClassName} onClick={onClick}>{text}</p>;
     case "title":

@@ -41,7 +41,7 @@ export const ProfilePhoto = ({ size = "md", icon = false, editProfile = false }:
                 />
             }
             {editProfile &&
-                <div className={`absolute ${isHoveredStatus ? '-right-[5.1vw]' : 'right-0'} bottom-11 flex justify-center items-center gap-2 w-fit h-fit p-2 bg-[#0D1117] rounded-full border border-[#666d74] cursor-pointer ${isHoveredStatus && 'shadow-lg'}`}
+                <div className={`hidden md:flex absolute ${isHoveredStatus ? '-right-[5.1vw]' : 'right-0'} bottom-11 flex justify-center items-center gap-2 w-fit h-fit p-2 bg-[#0D1117] rounded-full border border-[#666d74] cursor-pointer ${isHoveredStatus && 'shadow-lg'}`}
                     onMouseEnter={() => setIsHoveredStatus(true)}
                     onMouseLeave={() => setIsHoveredStatus(false)}>
                     <Typography
@@ -61,8 +61,8 @@ export const ProfilePhoto = ({ size = "md", icon = false, editProfile = false }:
             }
             {editProfile && isHovered && !isHoveredStatus &&
                 <>
-                    <div className="absolute -bottom-5 bg-[#6E7681] h-4 w-4 rotate-45"></div>
-                    <div className="absolute -bottom-10 bg-[#6E7681] w-fit h-[5vh] px-3 rounded-lg flex justify-center items-center">
+                    <div className="hidden md:flex absolute -bottom-5 bg-[#6E7681] h-4 w-4 rotate-45"></div>
+                    <div className="absolute -bottom-10 bg-[#6E7681] w-[30vw] md:w-fit h-fit md:h-[5vh] py-2 md:py-0 px-3 rounded-lg flex justify-center items-center text-center">
                         <Typography
                             text="Change your avatar"
                             type="p5"

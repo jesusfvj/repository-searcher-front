@@ -7,6 +7,7 @@ import { Props } from "../../../interface/children";
 import { useUI } from "../../../context/UI/UIContext";
 import { toastMessageError, toastMessageSuccess } from "../../utils/toaster";
 import { NavBar } from "./NavBar";
+import { Footer } from "./Footer";
 import { WorkInProgress } from "../WorkInProgress";
 
 export const Layout = ({ children }: Props) => {
@@ -40,12 +41,16 @@ export const Layout = ({ children }: Props) => {
         <>
             <div className="h-screen w-screen">
                 {!arrayExcludeLocations.includes(location.pathname) &&
-                    <div className="w-screen h-[9vh]">
+                    <div className="w-screen md:h-[9vh]">
                         <NavBar />
                     </div>}
                 <div className="w-screen min-h-fit bg-[#0D1117]">
                     {children}
                 </div>
+                {!arrayExcludeLocations.includes(location.pathname) &&
+                    <div className="w-screen h-fit py-12 bg-[#0D1117]">
+                        <Footer />
+                    </div>}
             </div>
             <ToastContainer />
             {isLoading && <Loader modal={true} />}
