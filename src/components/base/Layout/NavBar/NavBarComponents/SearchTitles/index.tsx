@@ -15,59 +15,59 @@ export const SearchTitles = () => {
         text="Dashboard"
         type="p3"
         color="white"
-        styles="cursor-pointer hover:text-[#BABBBD] md:hidden border-t border-[#33363b] md:border-0 w-full pt-2 md:pt-0"
+        styles="cursor-pointer hover:text-[#BABBBD] md:hidden border-t border-[#33363b] md:border-0 w-full md:w-fit pt-2 md:pt-0"
         onClick={() => setShowWorkInProgress(true)}
       />
       <Typography
         text="Pull requests"
         type="p3"
         color="white"
-        styles="cursor-pointer hover:text-[#BABBBD] border-t border-[#33363b] md:border-0 w-full pt-2 md:pt-0"
+        styles="cursor-pointer hover:text-[#BABBBD] border-t border-[#33363b] md:border-0 w-full md:w-fit pt-2 md:pt-0"
         onClick={() => setShowWorkInProgress(true)}
       />
       <Typography
         text="Issues"
         type="p3"
         color="white"
-        styles="cursor-pointer hover:text-[#BABBBD] border-t border-[#33363b] md:border-0 w-full pt-2 md:pt-0"
+        styles="cursor-pointer hover:text-[#BABBBD] border-t border-[#33363b] md:border-0 w-full md:w-fit pt-2 md:pt-0"
         onClick={() => setShowWorkInProgress(true)}
       />
       <Typography
         text="Codespaces"
         type="p3"
         color="white"
-        styles="cursor-pointer hover:text-[#BABBBD] border-t border-[#33363b] md:border-0 w-full pt-2 md:pt-0"
+        styles="cursor-pointer hover:text-[#BABBBD] border-t border-[#33363b] md:border-0 w-full md:w-fit pt-2 md:pt-0"
         onClick={() => setShowWorkInProgress(true)}
       />
       <Typography
         text="Marketplace"
         type="p3"
         color="white"
-        styles="cursor-pointer hover:text-[#BABBBD] border-t border-[#33363b] md:border-0 w-full pt-2 md:pt-0"
+        styles="cursor-pointer hover:text-[#BABBBD] border-t border-[#33363b] md:border-0 w-full md:w-fit pt-2 md:pt-0"
         onClick={() => setShowWorkInProgress(true)}
       />
       <Typography
         text="Explore"
         type="p3"
         color="white"
-        styles="cursor-pointer hover:text-[#BABBBD] border-t border-[#33363b] md:border-0 w-full pt-2 md:pt-0"
+        styles="cursor-pointer hover:text-[#BABBBD] border-t border-[#33363b] md:border-0 w-full md:w-fit pt-2 md:pt-0"
         onClick={() => setShowWorkInProgress(true)}
       />
       <Typography
         text="Sponsors"
         type="p3"
         color="white"
-        styles="cursor-pointer hover:text-[#BABBBD] md:hidden border-t border-[#33363b] md:border-0 w-full pt-2 md:pt-0"
+        styles="cursor-pointer hover:text-[#BABBBD] md:hidden border-t border-[#33363b] md:border-0 w-full md:w-fit pt-2 md:pt-0"
         onClick={() => setShowWorkInProgress(true)}
       />
       <Typography
         text="Settings"
         type="p3"
         color="white"
-        styles="cursor-pointer hover:text-[#BABBBD] md:hidden border-t border-[#33363b] md:border-0 w-full pt-2 md:pt-0"
+        styles="cursor-pointer hover:text-[#BABBBD] md:hidden border-t border-[#33363b] md:border-0 w-full md:w-fit pt-2 md:pt-0"
         onClick={() => setShowWorkInProgress(true)}
       />
-      <div className="flex gap-2 md:hidden items-center border-t border-[#33363b] md:border-0 w-full pt-2 md:pt-0">
+      <div className="flex gap-2 md:hidden items-center border-t border-[#33363b] md:border-0 w-full md:w-fit pt-2 md:pt-0">
         <ProfilePhoto size="md" />
         <Typography
           text={userNickName}
@@ -77,7 +77,7 @@ export const SearchTitles = () => {
           onClick={() => setShowWorkInProgress(true)}
         />
       </div>
-      <div className="flex gap-2 md:hidden items-center border-t border-[#33363b] md:border-0 w-full pt-2 md:pt-0"
+      <div className="flex gap-2 md:hidden items-center border-t border-[#33363b] md:border-0 w-full md:w-fit pt-2 md:pt-0"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={() => setShowWorkInProgress(true)}>

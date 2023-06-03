@@ -20,10 +20,11 @@ export const ProfileInformation = () => {
                 <ProfilePhoto size="xxl" editProfile={true} />
                 <UserTitle />
             </div>
-            {/** The following element only shows in small resolution */}
+            {/** The following element only shows in small resolution: */}
             <div className={`flex md:hidden justify-center items-center gap-2 w-full h-fit px-2 py-1 bg-[#0D1117] rounded-md border border-[#666d74] cursor-pointer`}
                 onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}>
+                onMouseLeave={() => setIsHovered(false)}
+                onClick={() => setShowWorkInProgress(true)}>
                 <Typography
                     text={<AiOutlineSmile />}
                     type="p1"
@@ -50,6 +51,6 @@ export const ProfileInformation = () => {
                 <FollowerFollowingInfo />
             </div>
             <PersonalInfo />
-        </div>
+        </div >
     )
 }

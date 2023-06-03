@@ -10,7 +10,7 @@ import { SearchTitles } from "../NavBarComponents/SearchTitles"
 export const NavBarResponsive = () => {
     const { setShowWorkInProgress } = useUI()
     const [showSearchBar, setShowSearchBar] = useState<boolean>(false)
-    
+
     return (
         <nav className="w-screen h-full bg-[#161B22] flex flex-col justify-between items-center px-4 py-4">
             <div className="flex justify-between items-center gap-4 w-full">
@@ -21,7 +21,10 @@ export const NavBarResponsive = () => {
                     styles="cursor-pointer"
                     onClick={() => setShowSearchBar(!showSearchBar)}
                 />
-                <Logo type="veryImportant" color="white" />
+                <Logo
+                    type="veryImportant"
+                    color="white"
+                    onClick={() => setShowWorkInProgress(true)} />
                 <Typography
                     text={<BiBell />}
                     type="big"

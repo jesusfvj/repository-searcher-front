@@ -22,8 +22,8 @@ export const Typography = ({
   const types: Record<string, string> = {
     title: `text-xl sm:text-4xl font-bold`,
     subtitle: `text-2xl sm:text-6xl font-medium`,
-    veryImportant: `text-4xl sm:text-6xl font-bold`,
-    important: `text-2xl sm:text-5xl font-bold`,
+    veryImportant: `text-6xl sm:text-6xl font-bold`,
+    important: `text-5xl sm:text-5xl font-bold`,
     big: `text-2xl sm:text-4xl font-bold`,
     p0: `text-xl sm:text-2xl font-normal`,
     p1: `text-lg sm:text-xl font-normal`,

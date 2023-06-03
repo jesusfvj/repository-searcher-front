@@ -44,7 +44,7 @@ export const Layout = ({ children }: Props) => {
                     <div className="w-screen md:h-[9vh]">
                         <NavBar />
                     </div>}
-                <div className="w-screen min-h-fit bg-[#0D1117]">
+                <div className="w-screen min-h-full bg-[#0D1117]">
                     {children}
                 </div>
                 {!arrayExcludeLocations.includes(location.pathname) &&
