@@ -1,17 +1,18 @@
+import { useUser } from "../../../../../context/UserContext/UserContext"
 import { Typography } from "../../../../base/Typography"
 
 export const UserTitle = () => {
-    const userName = "Jesus Velazquez Jurado"
-    const userNickName = "jesusfvj"
+    const {user} = useUser()
+
     return (
         <div className="flex-col mt-2">
             <Typography
-                text={userName}
+                text={user?.userData?.name}
                 type="p0"
                 color="white"
             />
             <Typography
-                text={userNickName}
+                text={user?.userData?.login}
                 type="p1"
                 color="gray"
             />

@@ -1,9 +1,33 @@
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import { DashBoardResponsive } from "../components/pages/Dashboard/DashBoardResponsive"
 import { ProfileInformation } from "../components/pages/Dashboard/ProfileInformation"
 import { RepositoryInformation } from "../components/pages/Dashboard/RepositoryInformation"
 import { RepositoryTitles } from "../components/pages/Dashboard/RepositoryTitles"
+import { useUI } from "../context/UI/UIContext"
+import { useUser } from "../context/UserContext/UserContext"
+import { checkTokenExpired } from "../utils/tokenExpiredValidator"
 
 export const Dashboard = () => {
+  const navigate = useNavigate()
+  const { setMessageErrorToaster, setIsExpired } = useUI()
+  const { user, getUserDataContext } = useUser()
+
+  useEffect(() => {
+    const getUserData = async () => {
+      const response = await getUserDataContext(user?.accessToken);
+      if (!response.ok) {
+        const isExpired = checkTokenExpired(response.data)
+        if (isExpired) {
+          setIsExpired(true)
+          navigate("/")
+        }
+        setMessageErrorToaster("There was a problem retrieving your user.")
+      }
+    };
+    getUserData();
+  }, [])
+
   return (
     <>
       <div className="hidden md:flex md:flex-col w-full h-full">
@@ -18,7 +42,7 @@ export const Dashboard = () => {
         </section>
       </div>
       {/**
-        * Responsive Dashboard
+        * Responsive Dashboard:
         */}
       <div className="md:hidden">
         <DashBoardResponsive />

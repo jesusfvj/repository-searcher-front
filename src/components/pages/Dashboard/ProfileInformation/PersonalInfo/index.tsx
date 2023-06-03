@@ -3,10 +3,11 @@ import { MdLocationPin } from "react-icons/md"
 import { AiFillLinkedin } from "react-icons/ai"
 import { BiTime } from "react-icons/bi"
 import { useUI } from "../../../../../context/UI/UIContext"
+import { useUser } from "../../../../../context/UserContext/UserContext"
 
 export const PersonalInfo = () => {
-    const userAddress = "Sanlucar de Barrameda, Cadiz, Spain"
-    const lastConection = "17:57"
+    const {user} = useUser()
+
     const userLinkedin = "in/jesusvj"
     const timeZone = "(UTC +02:00)"
 
@@ -21,7 +22,7 @@ export const PersonalInfo = () => {
                         color="gray"
                     />
                     <Typography
-                        text={userAddress}
+                        text={user?.userData?.location}
                         type="p3"
                         color="white"
                     />
@@ -33,14 +34,9 @@ export const PersonalInfo = () => {
                         color="gray"
                     />
                     <Typography
-                        text={lastConection}
+                        text={user?.userData?.updated_at}
                         type="p3"
                         color="white"
-                    />
-                    <Typography
-                        text={timeZone}
-                        type="p3"
-                        color="gray"
                     />
                 </div>
                 <div className="flex justify-start itmes-center gap-2">

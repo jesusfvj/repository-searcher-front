@@ -5,7 +5,7 @@ interface Action {
   payload?: any;
 }
 
-export const userReducer = (state = {}, action:Action) => {
+export const userReducer = (state = { user: null }, action:Action) => {
   switch (action.type) {
     case types.login:
       return {

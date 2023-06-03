@@ -1,13 +1,13 @@
 import { useState } from "react"
 import { MdPeopleAlt } from "react-icons/md"
 import { useUI } from "../../../../../context/UI/UIContext"
+import { useUser } from "../../../../../context/UserContext/UserContext"
 import { Typography } from "../../../../base/Typography"
 
 export const FollowerFollowingInfo = () => {
+    const {user} = useUser()
     const [isHoveredOne, setIsHoveredOne] = useState<boolean>(false)
     const [isHoveredTwo, setIsHoveredTwo] = useState<boolean>(false)
-    const numberFollowers = "20"
-    const numberFollowings = "21"
     const { setShowWorkInProgress } = useUI()
 
     return (
@@ -22,7 +22,7 @@ export const FollowerFollowingInfo = () => {
                     color={`${isHoveredOne ? 'blue' : 'gray'}`}
                 />
                 <Typography
-                    text={numberFollowers}
+                    text={user?.userData?.followers}
                     type="p3"
                     color={`${isHoveredOne ? 'blue' : 'white'}`}
                 />
@@ -43,7 +43,7 @@ export const FollowerFollowingInfo = () => {
                 onMouseLeave={() => setIsHoveredTwo(false)}
                 onClick={() => setShowWorkInProgress(true)}>
                 <Typography
-                    text={numberFollowings}
+                    text={user?.userData?.following}
                     type="p3"
                     color={`${isHoveredTwo ? 'blue' : 'white'}`}
                 />

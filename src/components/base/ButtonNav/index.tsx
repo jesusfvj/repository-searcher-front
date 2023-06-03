@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { useUser } from "../../../context/UserContext/UserContext";
 import { Typography } from "../Typography"
 
 interface ButtonNavProps {
@@ -8,6 +9,8 @@ interface ButtonNavProps {
 }
 
 export const ButtonNav = ({ icon, text, onClick }: ButtonNavProps): JSX.Element => {
+    const {user} = useUser()
+
     return (
         <>
             <div className="relative flex justify-center items-center gap-2 hover:bg-[#21262B] rounded-lg py-2 px-4 cursor-pointer"
@@ -24,7 +27,7 @@ export const ButtonNav = ({ icon, text, onClick }: ButtonNavProps): JSX.Element 
                 />
                 {text === "Repositories" &&
                     <Typography
-                        text="18"
+                        text={user?.userData?.public_repos}
                         type="p3"
                         color="white"
                         styles="bg-[#40464D] rounded-full px-2"

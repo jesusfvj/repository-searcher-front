@@ -7,10 +7,11 @@ import { FollowerFollowingInfo } from "./FollowerFollowingInfo"
 import { PersonalInfo } from "./PersonalInfo"
 import { useState } from "react"
 import { AiOutlineSmile } from "react-icons/ai"
+import { useUser } from "../../../../context/UserContext/UserContext"
 
 export const ProfileInformation = () => {
+    const {user} = useUser()
     const [isHovered, setIsHovered] = useState<boolean>(false)
-    const profileDescription = "Full Stack Developer | Html5 | CSS3 | JavaScript | Node.js | Express.js | MongoDB | React | Tailwind | PhP |#AssemblerInstituteofTechnology"
 
     const { setShowWorkInProgress } = useUI()
 
@@ -39,7 +40,7 @@ export const ProfileInformation = () => {
             </div>
             <div className="flex flex-col gap-5">
                 <Typography
-                    text={profileDescription}
+                    text={user?.userData?.bio}
                     type="p2"
                     color="white"
                 />
