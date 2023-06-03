@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { DashBoardResponsive } from "../components/pages/Dashboard/DashBoardResponsive"
 import { ProfileInformation } from "../components/pages/Dashboard/ProfileInformation"
@@ -10,12 +10,14 @@ import { checkTokenExpired } from "../utils/tokenExpiredValidator"
 
 export const Dashboard = () => {
   const navigate = useNavigate()
+  const [render, setRender] = useState<boolean>(false)
   const { setMessageErrorToaster, setIsExpired } = useUI()
   const { user, getUserDataContext } = useUser()
 
   useEffect(() => {
     const getUserData = async () => {
       const response = await getUserDataContext(user?.accessToken);
+      console.log(response)
       if (!response.ok) {
         const isExpired = checkTokenExpired(response.data)
         if (isExpired) {
@@ -27,6 +29,12 @@ export const Dashboard = () => {
     };
     getUserData();
   }, [])
+
+useEffect(() => {
+  console.log(user)
+  setRender(!render)
+}, [user])
+
 
   return (
     <>
