@@ -5,10 +5,10 @@ import { useEffect } from "react";
 import { Loader } from "../Loader";
 import { Props } from "../../../interface/children";
 import { useUI } from "../../../context/UI/UIContext";
-import { toastMessageError, toastMessageSuccess } from "../../utils/toaster";
 import { NavBar } from "./NavBar";
 import { Footer } from "./Footer";
 import { WorkInProgress } from "../WorkInProgress";
+import { toastMessageError, toastMessageSuccess } from "../../../utils/toaster";
 
 export const Layout = ({ children }: Props) => {
     const arrayExcludeLocations = ["/"]
