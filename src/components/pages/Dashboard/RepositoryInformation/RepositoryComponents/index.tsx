@@ -1,11 +1,13 @@
 import { useUI } from "../../../../../context/UI/UIContext";
 import { Typography } from "../../../../base/Typography"
 import { BiGitRepoForked } from "react-icons/bi"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ButtonComponent } from "../../../../base/ButtonComponent";
 import { AiOutlineStar } from "react-icons/ai";
 import { VscTriangleDown } from "react-icons/vsc";
 import { Repository } from "../../../../../interface/repository";
+import { getRelativeTime } from "../../../../../utils/timeToRelative";
+import { useUser } from "../../../../../context/UserContext/UserContext";
 
 interface RepositoryComponentsProps {
     repository: Repository
@@ -14,10 +16,19 @@ interface RepositoryComponentsProps {
 export const RepositoryComponents = ({ repository }: RepositoryComponentsProps): JSX.Element => {
     const { setShowWorkInProgress } = useUI()
     const [isHovered, setIsHovered] = useState<boolean>(false)
+    const [isHoveredStar, setIsHoveredStar] = useState<boolean>(false)
+    const [lastUpdate, setLastUpdate] = useState<string>("")
+    const { user } = useUser()
 
     const redirectToGitHub = () => {
         window.open(repository?.url, "_blank");
     }
+
+    useEffect(() => {
+        const relativeTime = getRelativeTime(repository?.updatedAt)
+        setLastUpdate(relativeTime)
+    }, [user])
+
 
     return (
         <div className="flex flex-col md:flex-row justify-between border-b-[0.1rem] border-[#1f2328] py-6">
@@ -58,12 +69,14 @@ export const RepositoryComponents = ({ repository }: RepositoryComponentsProps):
                         />
                     </div>
                 }
-                <div className="flex gap-4 mt-4">
-                    <Typography
-                        text={repository?.primaryLanguage?.name}
-                        type="p5"
-                        color="gray"
-                    />
+                <div className="flex flex-row justify-start items-center gap-4 mt-4">
+                    {repository?.primaryLanguage !== null &&
+                        <Typography
+                            text={repository?.primaryLanguage?.name}
+                            type="p5"
+                            color="gray"
+                        />
+                    }
                     {repository?.forkCount !== 0 &&
                         <div className="flex gap-1 items-center cursor-pointer"
                             onMouseEnter={() => setIsHovered(true)}
@@ -81,11 +94,30 @@ export const RepositoryComponents = ({ repository }: RepositoryComponentsProps):
                             />
                         </div>
                     }
-                    <Typography
-                        text={repository?.lastUpdated}
-                        type="p5"
-                        color="gray"
-                    />
+                    {repository?.stargazerCount !== 0 &&
+                        <div className="flex gap-1 items-center cursor-pointer"
+                            onMouseEnter={() => setIsHoveredStar(true)}
+                            onMouseLeave={() => setIsHoveredStar(false)}
+                            onClick={() => setShowWorkInProgress(true)}>
+                            <Typography
+                                text={<AiOutlineStar />}
+                                type="p2"
+                                color={`${isHoveredStar ? 'blue' : 'gray'}`}
+                            />
+                            <Typography
+                                text={repository?.stargazerCount}
+                                type="p5"
+                                color={`${isHoveredStar ? 'blue' : 'gray'}`}
+                            />
+                        </div>
+                    }
+                    <div>
+                        <Typography
+                            text={lastUpdate}
+                            type="p5"
+                            color="gray"
+                        />
+                    </div>
                 </div>
             </div>
             <div className="flex flex-row md:flex-col items-between pt-4 md:pt-0">

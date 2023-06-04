@@ -6,6 +6,7 @@ import { VscTriangleDown } from "react-icons/vsc"
 import { useState } from "react"
 import { TypeDropdown } from "./TypeDropdown"
 import { LanguageDropdown } from "./LanguageDropdown"
+import { SortDropdown } from "./SortDropdown"
 
 export const SearchButtons = () => {
     const [activeDropdown, setActiveDropdown] = useState<string>("none")
@@ -58,7 +59,7 @@ export const SearchButtons = () => {
                         styles={`${activeDropdown === "sort" && 'border-[#8B949E]'}`}
                         onClick={() => setActiveDropdown("sort")} />
                     {activeDropdown === "sort" &&
-                        <TypeDropdown setActiveDropdown={setActiveDropdown} />
+                        <SortDropdown setActiveDropdown={setActiveDropdown} />
                     }
                 </div>
             </div>

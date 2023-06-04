@@ -1,42 +1,50 @@
-import { useEffect } from "react"
 import { RxCross1 } from "react-icons/rx"
 import { TiTick } from "react-icons/ti"
 import { useUI } from "../../../../../../../context/UI/UIContext";
+import { sortName, sortStars, sortTime } from "../../../../../../../utils/sort";
 import { Typography } from "../../../../../../base/Typography"
 
-interface TypeDropdownProps {
+interface SortDropdownProps {
     setActiveDropdown: (value: string) => void;
 }
 
-export const TypeDropdown: React.FC<TypeDropdownProps> = ({ setActiveDropdown }) => {
-    const { repositories, setSortedRepositories, selectedTypeFilter, setSelectedTypeFilter} = useUI()
-    const arrayTitles = ["Select type", "All", "Public", "Private", "Sources", "Forks", "Archive", "Can be sponsored", "Mirrors", "Templates"]
+export const SortDropdown: React.FC<SortDropdownProps> = ({ setActiveDropdown }) => {
+    const { sortedRepositories, setSortedRepositories, selectedSortFilter, setSelectedSortFilter, setSearchInput, setIsSearching } = useUI()
+    const arrayTitles = ["Select order", "Last updated", "Name", "Stars"]
 
-    useEffect(() => {
-      const copyRepositories = [...repositories]
-      switch (selectedTypeFilter) {
-        case "All":
-            setSortedRepositories(copyRepositories)
-            break;
-        case "Private":
-            const privateRepositories = copyRepositories.filter(repo => repo.isPrivate === true);
-            setSortedRepositories(privateRepositories)
-            break;
-        case "Public":
-            const publicRepositories = copyRepositories.filter(repo => repo.isPrivate === false);
-            setSortedRepositories(publicRepositories)
-            break;
-      
-        default:
-            break;
-      }
-    }, [selectedTypeFilter])
-    
+    const handleSelectFilter = (e: React.MouseEvent<HTMLDivElement>, title: string) => {
+        setSearchInput("")
+        setIsSearching(false)
+        setSelectedSortFilter(title)
+        const copyRepositories = [...sortedRepositories]
+        switch (title) {
+            case "Last updated":
+                const sortedRepositoresByTime = sortTime(copyRepositories)
+                setSortedRepositories([...sortedRepositoresByTime])
+                break;
+            case "Name":
+                const sortedRepositoresByName = sortName(copyRepositories)
+                setSortedRepositories([...sortedRepositoresByName])
+                break;
+            case "Stars":
+                const sortedRepositoresByStars = sortStars(copyRepositories)
+                setSortedRepositories([...sortedRepositoresByStars])
+                break;
+
+            default:
+                break;
+        }
+        e.stopPropagation();
+        setTimeout(() => {
+            setActiveDropdown("none")
+        }, 200);
+    }
+
     return (
         <>
             <div className="fixed w-screen h-screen top-0 left-0"
                 onClick={() => setActiveDropdown("none")}></div>
-            <div className="absolute -left-[15vw] top-9 flex flex-col w-[40vh] h-fit bg-[#161B22] border-[0.1rem] border-[#30363D] rounded-lg shadow-lg">
+            <div className="absolute -left-[15.3vw] top-9 flex flex-col w-[40vh] h-fit bg-[#161B22] border-[0.1rem] border-[#30363D] rounded-lg shadow-lg">
                 {arrayTitles.map((title, index) => {
                     return (
                         <>
@@ -57,22 +65,20 @@ export const TypeDropdown: React.FC<TypeDropdownProps> = ({ setActiveDropdown })
                                 </div>
                             }
                             {index > 0 &&
-                                <div>
-                                    <div className="flex justify-start items-center py-1 px-4 hover:bg-[#30363D] cursor-pointer border-t-[0.1rem] border-[#30363D]"
-                                        onClick={() => setSelectedTypeFilter(title)}>
-                                        <Typography
-                                            text={<TiTick />}
-                                            color="white"
-                                            type="p2"
-                                            styles={`${selectedTypeFilter === title ? 'visible' : 'invisible'}`}
-                                        />
-                                        <Typography
-                                            text={title}
-                                            color="white"
-                                            type="p4"
-                                            styles={`${index === arrayTitles.length - 1 && 'pb-1'}`}
-                                        />
-                                    </div>
+                                <div className="flex justify-start items-center gap-2 py-1 px-4 hover:bg-[#30363D] cursor-pointer border-t-[0.1rem] border-[#30363D]"
+                                    onClick={(e) => { handleSelectFilter(e, title) }}>
+                                    <Typography
+                                        text={<TiTick />}
+                                        color="white"
+                                        type="p2"
+                                        styles={`${selectedSortFilter === title ? 'visible' : 'invisible'} mb-[0.1rem]`}
+                                    />
+                                    <Typography
+                                        text={title}
+                                        color="white"
+                                        type="p4"
+                                        styles={`${index === arrayTitles.length - 1 && 'pb-1'}`}
+                                    />
                                 </div>
                             }
                         </>

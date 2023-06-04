@@ -9,18 +9,20 @@ interface LanguageDropdownProps {
 }
 
 export const LanguageDropdown: React.FC<LanguageDropdownProps> = ({ setActiveDropdown }) => {
-    const { repositories, sortedRepositories, setSortedRepositories, selectedLanguageFilter, setSelectedLanguageFilter } = useUI()
+    const { repositories, setSortedRepositories, selectedLanguageFilter, setSelectedLanguageFilter, setSearchInput, setIsSearching } = useUI()
     const [arrayTitles, setArrayTitles] = useState<string[]>([]);
     const [arrayLanguages, setArrayLanguages] = useState<string[]>([]);
 
     const handleSelectFilter = (e: React.MouseEvent<HTMLDivElement>, selectedOption: string) => {
+        setSearchInput("")
+        setIsSearching(false)
         setSelectedLanguageFilter(selectedOption)
-        const copySortedRepositories = [...sortedRepositories]
-        arrayLanguages.forEach((language)=>{
-            if(language === "All"){
-                setSortedRepositories(copySortedRepositories)
+        const copyRepositories = [...repositories]
+        arrayLanguages.forEach((language) => {
+            if (selectedOption === "All") {
+                setSortedRepositories(copyRepositories)
             } else if (selectedOption === language) {
-                const privateRepositories = copySortedRepositories.filter(repo => repo?.primaryLanguage?.name === selectedOption);
+                const privateRepositories = copyRepositories.filter(repo => repo?.primaryLanguage?.name === selectedOption);
                 setSortedRepositories(privateRepositories)
             }
         })
@@ -69,22 +71,20 @@ export const LanguageDropdown: React.FC<LanguageDropdownProps> = ({ setActiveDro
                                 </div>
                             }
                             {index > 0 &&
-                                <div>
-                                    <div className="flex justify-start items-center py-1 px-4 hover:bg-[#30363D] cursor-pointer border-t-[0.1rem] border-[#30363D]"
-                                        onClick={(e) => { handleSelectFilter(e, title) }}>
-                                        <Typography
-                                            text={<TiTick />}
-                                            color="white"
-                                            type="p2"
-                                            styles={`${selectedLanguageFilter === title ? 'visible' : 'invisible'}`}
-                                        />
-                                        <Typography
-                                            text={title}
-                                            color="white"
-                                            type="p4"
-                                            styles={`${index === arrayTitles.length - 1 && 'pb-1'}`}
-                                        />
-                                    </div>
+                                <div className="flex justify-start items-center gap-2 py-1 px-4 hover:bg-[#30363D] cursor-pointer border-t-[0.1rem] border-[#30363D]"
+                                    onClick={(e) => { handleSelectFilter(e, title) }}>
+                                    <Typography
+                                        text={<TiTick />}
+                                        color="white"
+                                        type="p2"
+                                        styles={`${selectedLanguageFilter === title ? 'visible' : 'invisible'} mb-[0.1rem]`}
+                                    />
+                                    <Typography
+                                        text={title}
+                                        color="white"
+                                        type="p4"
+                                        styles={`${index === arrayTitles.length - 1 && 'pb-1'}`}
+                                    />
                                 </div>
                             }
                         </>

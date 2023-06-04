@@ -14,5 +14,5 @@ export interface Repository {
     },
     lastUpdated: string,
     forkCount: number,
-    private: boolean
+    stargazerCount: number,
   }

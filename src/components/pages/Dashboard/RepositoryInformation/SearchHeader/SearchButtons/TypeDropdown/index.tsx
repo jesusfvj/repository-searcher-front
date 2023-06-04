@@ -8,11 +8,12 @@ interface TypeDropdownProps {
 }
 
 export const TypeDropdown: React.FC<TypeDropdownProps> = ({ setActiveDropdown }) => {
-    const { repositories, setSortedRepositories, selectedTypeFilter, setSelectedTypeFilter } = useUI()
-    const arrayTitles = ["Select type", "All", "Public", "Private", "Sources", "Forks", "Archive", "Can be sponsored", "Mirrors", "Templates"]
+    const { repositories, setSortedRepositories, selectedTypeFilter, setSelectedTypeFilter, setSearchInput, setIsSearching } = useUI()
+    const arrayTitles = ["Select type", "All", "Public", "Private", "Forks"]
 
-
-    const handleSelectFilter = (e: React.MouseEvent<HTMLDivElement>, title:string) => {
+    const handleSelectFilter = (e: React.MouseEvent<HTMLDivElement>, title: string) => {
+        setSearchInput("")
+        setIsSearching(false)
         setSelectedTypeFilter(title)
         const copyRepositories = [...repositories]
         switch (title) {
@@ -27,12 +28,16 @@ export const TypeDropdown: React.FC<TypeDropdownProps> = ({ setActiveDropdown })
                 const publicRepositories = copyRepositories.filter(repo => repo.isPrivate === false);
                 setSortedRepositories(publicRepositories)
                 break;
+            case "Forks":
+                const forkedRepositories = copyRepositories.filter(repo => repo.forkCount !== 0);
+                setSortedRepositories(forkedRepositories)
+                break;
 
             default:
                 break;
         }
         e.stopPropagation();
-        setTimeout(()=>{
+        setTimeout(() => {
             setActiveDropdown("none")
         }, 200);
     }
@@ -63,13 +68,13 @@ export const TypeDropdown: React.FC<TypeDropdownProps> = ({ setActiveDropdown })
                             }
                             {index > 0 &&
                                 <div>
-                                    <div className="flex justify-start items-center py-1 px-4 hover:bg-[#30363D] cursor-pointer border-t-[0.1rem] border-[#30363D]"
-                                        onClick={(e) => {handleSelectFilter(e,title)}}>
+                                    <div className="flex justify-start items-center gap-2 py-1 px-4 hover:bg-[#30363D] cursor-pointer border-t-[0.1rem] border-[#30363D]"
+                                        onClick={(e) => { handleSelectFilter(e, title) }}>
                                         <Typography
                                             text={<TiTick />}
                                             color="white"
                                             type="p2"
-                                            styles={`${selectedTypeFilter === title ? 'visible' : 'invisible'}`}
+                                            styles={`${selectedTypeFilter === title ? 'visible' : 'invisible'} mb-[0.1rem]`}
                                         />
                                         <Typography
                                             text={title}
