@@ -67,22 +67,20 @@ export const TypeDropdown: React.FC<TypeDropdownProps> = ({ setActiveDropdown })
                                 </div>
                             }
                             {index > 0 &&
-                                <div>
-                                    <div className="flex justify-start items-center gap-2 py-1 px-4 hover:bg-[#30363D] cursor-pointer border-t-[0.1rem] border-[#30363D]"
-                                        onClick={(e) => { handleSelectFilter(e, title) }}>
-                                        <Typography
-                                            text={<TiTick />}
-                                            color="white"
-                                            type="p2"
-                                            styles={`${selectedTypeFilter === title ? 'visible' : 'invisible'} mb-[0.1rem]`}
-                                        />
-                                        <Typography
-                                            text={title}
-                                            color="white"
-                                            type="p4"
-                                            styles={`${index === arrayTitles.length - 1 && 'pb-1'}`}
-                                        />
-                                    </div>
+                                <div className="flex justify-start items-center gap-2 py-1 px-4 hover:bg-[#30363D] cursor-pointer border-t-[0.1rem] border-[#30363D]"
+                                    onClick={(e) => { handleSelectFilter(e, title) }}>
+                                    <Typography
+                                        text={<TiTick />}
+                                        color="white"
+                                        type="p2"
+                                        styles={`${selectedTypeFilter === title ? 'visible' : 'invisible'} mb-[0.1rem]`}
+                                    />
+                                    <Typography
+                                        text={title}
+                                        color="white"
+                                        type="p4"
+                                        styles={`${index === arrayTitles.length - 1 && 'pb-1'}`}
+                                    />
                                 </div>
                             }
                         </>

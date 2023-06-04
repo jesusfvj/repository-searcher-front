@@ -11,7 +11,7 @@ export const UserContext = createContext<UserContextType>({ user: null } as User
 
 type UserContextType = {
   login: (codeParam: string) => Promise<{ ok: boolean; data: string; token: string; }>,
-  logout: () => void,
+  logout: () => boolean,
   getUserDataContext: (accessToken?: string) => Promise<{ ok: boolean; data: string; }>,
   user:any;
   /* user: UserResponse | null; */
@@ -44,7 +44,6 @@ export const UserProvider = ({ children }: Props) => {
 
   const getUserDataContext = async (accessToken: string | undefined = "") => {
     const response = await getUserDataAPI(accessToken)
-    console.log(response)
     if (response.ok) {
       dispatch({ type: types.login, payload: { userData: response.data } });
     }
@@ -52,8 +51,9 @@ export const UserProvider = ({ children }: Props) => {
   }
 
   const logout = () => {
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem("token");
     dispatch({ type: types.logout });
+    return true
   };
 
   return (

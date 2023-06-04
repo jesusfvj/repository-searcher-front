@@ -18,7 +18,7 @@ export const ProfileInformation = () => {
     return (
         <div className="flex flex-col justify-start gap-8 w-full md:w-1/4 h-full pb-10 px-3 md:px-0">
             <div className="flex flex-row md:flex-col gap-8 pt-8 md:pt-0">
-                <ProfilePhoto size="xxl" editProfile={true} />
+                <ProfilePhoto size="xxl" editProfile={true} onClick={() => setShowWorkInProgress(true)}/>
                 <UserTitle />
             </div>
             {/** The following element only shows in small resolution: */}

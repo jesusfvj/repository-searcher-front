@@ -2,20 +2,19 @@ import { useState } from "react"
 import { Typography } from "../Typography";
 import { VscTriangleDown } from "react-icons/vsc";
 import { AiOutlineSmile } from "react-icons/ai";
-import { useUI } from "../../../context/UI/UIContext";
 import { useUser } from "../../../context/UserContext/UserContext";
 
 interface ProfilePhotoProp {
     size: "lg" | "md" | "sm" | "xxl";
     icon?: boolean;
     editProfile?: boolean;
+    onClick?: ()=>void;
 }
 
-export const ProfilePhoto = ({ size = "md", icon = false, editProfile = false }: ProfilePhotoProp): JSX.Element => {
+export const ProfilePhoto = ({ size = "md", icon = false, editProfile = false, onClick }: ProfilePhotoProp): JSX.Element => {
     const {user} = useUser()
     const [isHovered, setIsHovered] = useState<boolean>(false)
     const [isHoveredStatus, setIsHoveredStatus] = useState<boolean>(false)
-    const { setShowWorkInProgress } = useUI()
 
     const types: Record<string, string> = {
         xxl: `w-[22vw] h-[22vw]`,
@@ -26,9 +25,9 @@ export const ProfilePhoto = ({ size = "md", icon = false, editProfile = false }:
 
     return (
         <div className="relative flex justify-center items-center rounded-full"
-            onClick={() => setShowWorkInProgress(true)}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            onClick={onClick}
         >
             <div className={`rounded-full border border-[#666d74] ${types[size]} cursor-pointer`}>
                 <img src={user?.userData?.avatarUrl} alt="profile photo" className="w-full h-full rounded-full" />
