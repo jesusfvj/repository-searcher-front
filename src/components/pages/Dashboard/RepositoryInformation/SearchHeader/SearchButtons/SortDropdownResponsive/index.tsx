@@ -8,7 +8,7 @@ interface SortDropdownProps {
     setActiveDropdown: (value: string) => void;
 }
 
-export const SortDropdown: React.FC<SortDropdownProps> = ({ setActiveDropdown }) => {
+export const SortDropdownResponsive: React.FC<SortDropdownProps> = ({ setActiveDropdown }) => {
     const { sortedRepositories, setSortedRepositories, selectedSortFilter, setSelectedSortFilter, setSearchInput, setIsSearching } = useUI()
     const arrayTitles = ["Select order", "Last updated", "Name", "Stars"]
 
@@ -42,9 +42,7 @@ export const SortDropdown: React.FC<SortDropdownProps> = ({ setActiveDropdown })
 
     return (
         <>
-            <div className="hidden md:flex fixed w-screen h-screen top-0 left-0"
-                onClick={() => setActiveDropdown("none")}></div>
-            <div className="hidden md:flex absolute -left-[15.2vw] top-9 flex-col w-[40vh] h-fit bg-[#161B22] border-[0.1rem] border-[#30363D] rounded-lg shadow-lg">
+            <div className="w-[95vw] flex flex-col h-fit bg-[#161B22] border-[0.1rem] border-[#30363D] rounded-md mt-3">
                 {arrayTitles.map((title, index) => {
                     return (
                         <>

@@ -7,7 +7,7 @@ interface TypeDropdownProps {
     setActiveDropdown: (value: string) => void;
 }
 
-export const TypeDropdown: React.FC<TypeDropdownProps> = ({ setActiveDropdown }) => {
+export const TypeDropdownResponsive: React.FC<TypeDropdownProps> = ({ setActiveDropdown }) => {
     const { repositories, setSortedRepositories, selectedTypeFilter, setSelectedTypeFilter, setSearchInput, setIsSearching } = useUI()
     const arrayTitles = ["Select type", "All", "Public", "Private", "Forks"]
 
@@ -44,9 +44,7 @@ export const TypeDropdown: React.FC<TypeDropdownProps> = ({ setActiveDropdown })
 
     return (
         <>
-            <div className="hidden md:flex fixed w-screen h-screen top-0 left-0"
-                onClick={() => setActiveDropdown("none")}></div>
-            <div className="hidden md:flex absolute -left-[15vw] top-9 flex-col w-[40vh] h-fit bg-[#161B22] border-[0.1rem] border-[#30363D] rounded-lg shadow-lg">
+            <div className="w-[95vw] flex flex-col h-fit bg-[#161B22] border-[0.1rem] border-[#30363D] rounded-md mt-3">
                 {arrayTitles.map((title, index) => {
                     return (
                         <>

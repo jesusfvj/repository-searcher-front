@@ -1,50 +1,54 @@
+import { useEffect, useState } from "react"
 import { RxCross1 } from "react-icons/rx"
 import { TiTick } from "react-icons/ti"
 import { useUI } from "../../../../../../../context/UI/UIContext";
-import { sortName, sortStars, sortTime } from "../../../../../../../utils/sort";
 import { Typography } from "../../../../../../base/Typography"
 
-interface SortDropdownProps {
+interface LanguageDropdownProps {
     setActiveDropdown: (value: string) => void;
 }
 
-export const SortDropdown: React.FC<SortDropdownProps> = ({ setActiveDropdown }) => {
-    const { sortedRepositories, setSortedRepositories, selectedSortFilter, setSelectedSortFilter, setSearchInput, setIsSearching } = useUI()
-    const arrayTitles = ["Select order", "Last updated", "Name", "Stars"]
+export const LanguageDropdownResponsive: React.FC<LanguageDropdownProps> = ({ setActiveDropdown }) => {
+    const { repositories, setSortedRepositories, selectedLanguageFilter, setSelectedLanguageFilter, setSearchInput, setIsSearching } = useUI()
+    const [arrayTitles, setArrayTitles] = useState<string[]>([]);
+    const [arrayLanguages, setArrayLanguages] = useState<string[]>([]);
 
-    const handleSelectFilter = (e: React.MouseEvent<HTMLDivElement>, title: string) => {
+    const handleSelectFilter = (e: React.MouseEvent<HTMLDivElement>, selectedOption: string) => {
         setSearchInput("")
         setIsSearching(false)
-        setSelectedSortFilter(title)
-        const copyRepositories = [...sortedRepositories]
-        switch (title) {
-            case "Last updated":
-                const sortedRepositoresByTime = sortTime(copyRepositories)
-                setSortedRepositories([...sortedRepositoresByTime])
-                break;
-            case "Name":
-                const sortedRepositoresByName = sortName(copyRepositories)
-                setSortedRepositories([...sortedRepositoresByName])
-                break;
-            case "Stars":
-                const sortedRepositoresByStars = sortStars(copyRepositories)
-                setSortedRepositories([...sortedRepositoresByStars])
-                break;
-
-            default:
-                break;
-        }
+        setSelectedLanguageFilter(selectedOption)
+        const copyRepositories = [...repositories]
+        arrayLanguages.forEach((language) => {
+            if (selectedOption === "All") {
+                setSortedRepositories(copyRepositories)
+            } else if (selectedOption === language) {
+                const privateRepositories = copyRepositories.filter(repo => repo?.primaryLanguage?.name === selectedOption);
+                setSortedRepositories(privateRepositories)
+            }
+        })
         e.stopPropagation();
         setTimeout(() => {
             setActiveDropdown("none")
         }, 200);
     }
 
+    useEffect(() => {
+        const uniqueLanguageNames: any = [...new Set(repositories?.map(repo => {
+            if (typeof repo.primaryLanguage === 'object' && repo.primaryLanguage !== null && 'name' in repo.primaryLanguage) {
+                return repo.primaryLanguage.name;
+            };
+        }))];
+        const uniqueLanguageNamesFiltered = [...uniqueLanguageNames].filter(name => name !== null && name !== undefined && typeof name === 'string');
+        setArrayLanguages([...uniqueLanguageNamesFiltered])
+        uniqueLanguageNamesFiltered.unshift("All");
+        uniqueLanguageNamesFiltered.unshift("Select language");
+        setArrayTitles(uniqueLanguageNamesFiltered)
+    }, [selectedLanguageFilter])
+
+
     return (
         <>
-            <div className="hidden md:flex fixed w-screen h-screen top-0 left-0"
-                onClick={() => setActiveDropdown("none")}></div>
-            <div className="hidden md:flex absolute -left-[15.2vw] top-9 flex-col w-[40vh] h-fit bg-[#161B22] border-[0.1rem] border-[#30363D] rounded-lg shadow-lg">
+            <div className="w-[95vw] flex flex-col h-fit bg-[#161B22] border-[0.1rem] border-[#30363D] rounded-md mt-3">
                 {arrayTitles.map((title, index) => {
                     return (
                         <>
@@ -71,7 +75,7 @@ export const SortDropdown: React.FC<SortDropdownProps> = ({ setActiveDropdown })
                                         text={<TiTick />}
                                         color="white"
                                         type="p2"
-                                        styles={`${selectedSortFilter === title ? 'visible' : 'invisible'} mb-[0.1rem]`}
+                                        styles={`${selectedLanguageFilter === title ? 'visible' : 'invisible'} mb-[0.1rem]`}
                                     />
                                     <Typography
                                         text={title}
