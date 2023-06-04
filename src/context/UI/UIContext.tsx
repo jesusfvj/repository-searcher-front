@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { Props } from "../../interface/children";
+import { Repository } from "../../interface/repository";
 
 export const UIContext = createContext<UIContextType>({} as UIContextType);
 
@@ -10,7 +11,15 @@ type UIContextType = {
   setIsLoading: (isLoading: boolean) => void;
   setShowWorkInProgress: (showWorkInProgress: boolean) => void;
   setIsExpired: (isExpired: boolean) => void;
-  isExpired: boolean,
+  setRepositories: (repositories: Repository[]) => void;
+  setSortedRepositories: (repositories: Repository[]) => void;
+  setSelectedTypeFilter: (selectedTypeFilter: string) => void;
+  setSelectedLanguageFilter: (selectedLanguageFilter: string) => void;
+  selectedLanguageFilter: string;
+  selectedTypeFilter: string;
+  sortedRepositories: Repository[];
+  repositories: Repository[];
+  isExpired: boolean
   showWorkInProgress: boolean;
   messageSuccessToaster: string;
   messageErrorToaster: string;
@@ -24,6 +33,10 @@ export const useUI = (): UIContextType => {
 };
 
 export const UIProvider = ({ children }: Props) => {
+  const [selectedLanguageFilter, setSelectedLanguageFilter] = useState<string>("All");
+  const [selectedTypeFilter, setSelectedTypeFilter] = useState<string>("All");
+  const [repositories, setRepositories] = useState<Array<Repository>>([]);
+  const [sortedRepositories, setSortedRepositories] = useState<Array<Repository>>([]);
   const [messageSuccessToaster, setMessageSuccessToaster] = useState<string>("");
   const [messageErrorToaster, setMessageErrorToaster] = useState<string>("");
   const [loadingMessage, setLoadingMessage] = useState<boolean>(false);
@@ -46,6 +59,14 @@ export const UIProvider = ({ children }: Props) => {
         isLoading,
         isExpired,
         setIsExpired,
+        repositories,
+        setRepositories,
+        selectedTypeFilter,
+        setSelectedTypeFilter,
+        sortedRepositories,
+        setSortedRepositories,
+        selectedLanguageFilter,
+        setSelectedLanguageFilter
       }}
     >
       {children}

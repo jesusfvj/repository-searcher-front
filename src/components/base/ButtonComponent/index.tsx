@@ -21,9 +21,9 @@ export const ButtonComponent = ({ text = "", size = "md", color = "gray", roundS
     };
 
     const side = {
-        right: "r-",
-        left: "l-",
-        none: ""
+        right: "rounded-r-md",
+        left: "rounded-l-md",
+        none: "rounded-md"
     }
 
     const sizes = {
@@ -32,7 +32,7 @@ export const ButtonComponent = ({ text = "", size = "md", color = "gray", roundS
         xs: "text-xs lg:text-xs px-3 py-1",
     };
 
-    const finalClassName = `w-full h-full system flex justify-center items-center cursor-pointer rounded-${side[roundSide]}md transition ${sizes[size]} ${buttonColors[color]} hover:${buttonColors[color]}/80 active:scale-[0.995] active:translate-y-[0.5px]`;
+    const finalClassName = `w-full h-full system flex justify-center items-center cursor-pointer ${side[roundSide]} transition ${sizes[size]} ${buttonColors[color]} hover:${buttonColors[color]}/80 active:scale-[0.995] active:translate-y-[0.5px]`;
 
     return (
         <button onClick={onClick} className={`${finalClassName} ${styles}`}>

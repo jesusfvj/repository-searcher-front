@@ -1,6 +1,7 @@
 import { useEffect, createContext, useReducer } from "react";
 import { useContext } from "react";
-import { getAccessTokenAPI, getUserDataAPI } from "../../API/user.api";
+import { getAccessTokenAPI } from "../../API/user.api";
+import { getUserDataAPI } from "../../API/graphql.api";
 import { Props } from "../../interface/children";
 import { retrieveAccessToken } from "../../utils/stringManipulation";
 import { types } from "../Types/types";

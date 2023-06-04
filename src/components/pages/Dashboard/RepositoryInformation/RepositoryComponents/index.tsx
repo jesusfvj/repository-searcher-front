@@ -5,55 +5,44 @@ import { useState } from "react";
 import { ButtonComponent } from "../../../../base/ButtonComponent";
 import { AiOutlineStar } from "react-icons/ai";
 import { VscTriangleDown } from "react-icons/vsc";
+import { Repository } from "../../../../../interface/repository";
 
 interface RepositoryComponentsProps {
-    repository: {
-        title: string,
-        description: string,
-        language: string,
-        lastUpdated: string,
-        forked: string,
-        forkedFrom?: string,
-        isPublic: boolean,
-    };
+    repository: Repository
 }
 
 export const RepositoryComponents = ({ repository }: RepositoryComponentsProps): JSX.Element => {
     const { setShowWorkInProgress } = useUI()
     const [isHovered, setIsHovered] = useState<boolean>(false)
 
-    const { title,
-        description,
-        language,
-        lastUpdated,
-        forked,
-        forkedFrom,
-        isPublic } = repository
+    const redirectToGitHub = () => {
+        window.open(repository?.url, "_blank");
+    }
 
     return (
         <div className="flex flex-col md:flex-row justify-between border-b-[0.1rem] border-[#1f2328] py-6">
             <div className="flex flex-col gap-1">
                 <div className="flex flex-col md:flex-row gap-2 items-start md:items-center pb-2 md:pb-0">
                     <Typography
-                        text={title}
+                        text={repository?.name}
                         type="p0"
                         color="blue"
                         styles="cursor-pointer hover:text-[#2F81F7] hover:underline"
-                        onClick={() => setShowWorkInProgress(true)}
+                        onClick={redirectToGitHub}
                     />
                     <Typography
-                        text={`${isPublic ? 'Public' : 'Private'}`}
+                        text={`${repository?.isPrivate ? 'Private' : 'Public'}`}
                         type="p4"
-                        color={`${isPublic ? 'gray' : 'danger'}`}
+                        color={`${repository?.isPrivate ? 'danger' : 'gray'}`}
                         styles="border border-[#33363b] rounded-full px-2 h-6 pt-[0.15rem] w-fit"
                     />
                 </div>
                 <Typography
-                    text={description}
+                    text={repository?.description}
                     type="p3"
                     color="gray"
                 />
-                {forkedFrom &&
+                {repository?.forkedFrom?.name &&
                     <div className="flex gap-1">
                         <Typography
                             text="Forked from"
@@ -61,7 +50,7 @@ export const RepositoryComponents = ({ repository }: RepositoryComponentsProps):
                             color="gray"
                         />
                         <Typography
-                            text={forkedFrom}
+                            text={repository?.forkedFrom?.name}
                             type="p5"
                             color="gray"
                             styles="cursor-pointer hover:text-[#2F81F7]"
@@ -71,11 +60,11 @@ export const RepositoryComponents = ({ repository }: RepositoryComponentsProps):
                 }
                 <div className="flex gap-4 mt-4">
                     <Typography
-                        text={language}
+                        text={repository?.primaryLanguage?.name}
                         type="p5"
                         color="gray"
                     />
-                    {forked !== "0" &&
+                    {repository?.forkCount !== 0 &&
                         <div className="flex gap-1 items-center cursor-pointer"
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
@@ -86,14 +75,14 @@ export const RepositoryComponents = ({ repository }: RepositoryComponentsProps):
                                 color={`${isHovered ? 'blue' : 'gray'}`}
                             />
                             <Typography
-                                text={forked}
+                                text={repository?.forkCount}
                                 type="p5"
                                 color={`${isHovered ? 'blue' : 'gray'}`}
                             />
                         </div>
                     }
                     <Typography
-                        text={lastUpdated}
+                        text={repository?.lastUpdated}
                         type="p5"
                         color="gray"
                     />

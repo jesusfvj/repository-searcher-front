@@ -1,116 +1,33 @@
+import { useEffect } from "react";
+import { useUI } from "../../../../context/UI/UIContext";
+import { useUser } from "../../../../context/UserContext/UserContext";
+import { Repository } from "../../../../interface/repository";
+import { TitleSortedRepositories } from "./TitleSortedRepositories";
 import { RepositoryComponents } from "./RepositoryComponents"
 import { SearchHeader } from "./SearchHeader"
 
 export const RepositoryInformation = () => {
+  const { sortedRepositories, setRepositories, setSortedRepositories, selectedTypeFilter } = useUI()
+  const { user } = useUser()
 
-  const repositories = [
-    {
-      title: "exercises-graphic-interface",
-      description: "Exercises to learn the use of the graphic interface of VSC for Git",
-      language: "JavaScript",
-      lastUpdated: "Dec 1, 2022",
-      forked: "0",
-      forkedFrom: "",
-      isPublic: true
-    },
-    {
-      title: "exercises-something-else",
-      description: "Exercises for something else",
-      language: "Python",
-      lastUpdated: "Jan 10, 2023",
-      forked: "1",
-      forkedFrom: "assembler-institute/php-basics",
-      isPublic: true
-    },
-    {
-      title: "exercises-another-one",
-      description: "More exercises",
-      language: "Java",
-      lastUpdated: "Feb 15, 2023",
-      forked: "0",
-      forkedFrom: "",
-      isPublic: true
-    },
-    {
-      title: "exercises-another-one",
-      description: "More exercises",
-      language: "Java",
-      lastUpdated: "Feb 15, 2023",
-      forked: "0",
-      forkedFrom: "",
-      isPublic: false
-    },
-    {
-      title: "exercises-another-one",
-      description: "More exercises",
-      language: "Java",
-      lastUpdated: "Feb 15, 2023",
-      forked: "2",
-      forkedFrom: "",
-      isPublic: true
-    },
-    {
-      title: "exercises-another-one",
-      description: "More exercises",
-      language: "Java",
-      lastUpdated: "Feb 15, 2023",
-      forked: "0",
-      forkedFrom: "",
-      isPublic: false
-    },
-    {
-      title: "exercises-another-one",
-      description: "More exercises",
-      language: "Java",
-      lastUpdated: "Feb 15, 2023",
-      forked: "0",
-      forkedFrom: "",
-      isPublic: true
-    },
-    {
-      title: "exercises-another-one",
-      description: "More exercises",
-      language: "Java",
-      lastUpdated: "Feb 15, 2023",
-      forked: "8",
-      forkedFrom: "",
-      isPublic: true
-    },
-    {
-      title: "exercises-another-one",
-      description: "More exercises",
-      language: "Java",
-      lastUpdated: "Feb 15, 2023",
-      forked: "0",
-      forkedFrom: "",
-      isPublic: true
-    },
-    {
-      title: "exercises-another-one",
-      description: "More exercises",
-      language: "Java",
-      lastUpdated: "Feb 15, 2023",
-      forked: "0",
-      forkedFrom: "",
-      isPublic: false
-    },
-    {
-      title: "exercises-another-one",
-      description: "More exercises",
-      language: "Java",
-      lastUpdated: "Feb 15, 2023",
-      forked: "0",
-      forkedFrom: "",
-      isPublic: true
-    },
-  ];
+  useEffect(() => {
+    if (user?.userData?.repositories?.nodes) {
+      const arrayRepositories = user?.userData?.repositories?.nodes
+      const a = [...arrayRepositories]
+      setRepositories(a)
+      setSortedRepositories(a)
+    }
+  }, [user])
 
   return (
     <div className="flex flex-col w-full md:pl-4">
       <SearchHeader />
-      {repositories && repositories.length > 0 &&
+      {selectedTypeFilter !== "All" &&
+        <TitleSortedRepositories />
+      }
+      {sortedRepositories && sortedRepositories.length > 0 &&
         <div>
-          {Object.values(repositories).map((repository, index) => {
+          {sortedRepositories.map((repository: Repository, index: number) => {
             return (
               <RepositoryComponents key={index} repository={repository} />
             )

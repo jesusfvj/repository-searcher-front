@@ -22,7 +22,7 @@ export const FollowerFollowingInfo = () => {
                     color={`${isHoveredOne ? 'blue' : 'gray'}`}
                 />
                 <Typography
-                    text={user?.userData?.followers}
+                    text={user?.userData?.followers?.totalCount}
                     type="p3"
                     color={`${isHoveredOne ? 'blue' : 'white'}`}
                 />
@@ -43,7 +43,7 @@ export const FollowerFollowingInfo = () => {
                 onMouseLeave={() => setIsHoveredTwo(false)}
                 onClick={() => setShowWorkInProgress(true)}>
                 <Typography
-                    text={user?.userData?.following}
+                    text={user?.userData?.following?.totalCount}
                     type="p3"
                     color={`${isHoveredTwo ? 'blue' : 'white'}`}
                 />

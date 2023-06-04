@@ -31,7 +31,7 @@ export const ProfilePhoto = ({ size = "md", icon = false, editProfile = false }:
             onMouseLeave={() => setIsHovered(false)}
         >
             <div className={`rounded-full border border-[#666d74] ${types[size]} cursor-pointer`}>
-                <img src={user?.userData?.avatar_url} alt="profile photo" className="w-full h-full rounded-full" />
+                <img src={user?.userData?.avatarUrl} alt="profile photo" className="w-full h-full rounded-full" />
             </div>
             {icon &&
                 <Typography

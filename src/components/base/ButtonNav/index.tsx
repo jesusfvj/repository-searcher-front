@@ -27,7 +27,7 @@ export const ButtonNav = ({ icon, text, onClick }: ButtonNavProps): JSX.Element 
                 />
                 {text === "Repositories" &&
                     <Typography
-                        text={user?.userData?.public_repos}
+                        text={user?.userData?.repositories?.totalCount}
                         type="p3"
                         color="white"
                         styles="bg-[#40464D] rounded-full px-2"

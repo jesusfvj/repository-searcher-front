@@ -91,7 +91,7 @@ export const LandingPage = () => {
         </div>
         {isExpired &&
           <Typography
-            text="Session has expired. Please log in agai."
+            text="Session has expired. Please log in again."
             type="p3"
             color="danger"
             styles="text-center"

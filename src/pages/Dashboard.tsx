@@ -17,7 +17,6 @@ export const Dashboard = () => {
   useEffect(() => {
     const getUserData = async () => {
       const response = await getUserDataContext(user?.accessToken);
-      console.log(response)
       if (!response.ok) {
         const isExpired = checkTokenExpired(response.data)
         if (isExpired) {
@@ -34,7 +33,6 @@ useEffect(() => {
   console.log(user)
   setRender(!render)
 }, [user])
-
 
   return (
     <>
