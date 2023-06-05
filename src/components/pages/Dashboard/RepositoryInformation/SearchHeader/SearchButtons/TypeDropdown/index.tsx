@@ -9,7 +9,7 @@ interface TypeDropdownProps {
 }
 
 export const TypeDropdown: React.FC<TypeDropdownProps> = ({ setActiveDropdown }) => {
-    const { repositories, setSortedRepositories, selectedTypeFilter, setSelectedTypeFilter, setSearchInput, setIsSearching, arrayLanguages, setArrayLanguages, selectedLanguageFilter } = useUI()
+    const { repositories, setSortedRepositories, selectedTypeFilter, setSelectedTypeFilter, setSearchInput, setIsSearching, arrayLanguages, selectedLanguageFilter } = useUI()
     const arrayTitles = ["Select type", "All", "Public", "Private", "Forks"]
 
     const handleSelectFilter = (e: React.MouseEvent<HTMLDivElement>, title: string) => {
