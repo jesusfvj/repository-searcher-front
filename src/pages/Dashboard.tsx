@@ -12,13 +12,16 @@ export const Dashboard = () => {
   const navigate = useNavigate()
   const [render, setRender] = useState<boolean>(false)
   const { setMessageErrorToaster, setIsExpired, setIsLoading } = useUI()
-  const { user, getUserDataContext } = useUser()
+  const { user, getUserDataContext, logout } = useUser()
+  const [loadingTimeout, setLoadingTimeout] = useState<NodeJS.Timeout>();
 
   useEffect(() => {
     if (!user?.userData) {
       const getUserData = async () => {
         setIsLoading(true)
+        setLoadingTimeout(setTimeout(handleTimeout, 60000));
         const response = await getUserDataContext();
+        clearTimeout(loadingTimeout);
         setIsLoading(false)
         if (!response.ok) {
           const isExpired = checkTokenExpired(response.data)
@@ -32,6 +35,10 @@ export const Dashboard = () => {
       getUserData();
     }
   }, [])
+
+  const handleTimeout = () => {
+    logout()
+  };
 
   useEffect(() => {
     setRender(!render)
