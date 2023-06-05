@@ -32,14 +32,12 @@ export const RepositoryInformation = () => {
 
   useEffect(() => {
     if (userId && foundUser && Object.keys(foundUser).length !== 0) {
-      console.log(foundUser)
       const arrayRepositories = foundUser?.repositories?.nodes
       /**Set the default order of the repositories to last updated */
       setRepositories(sortTime([...arrayRepositories]))
       setSortedRepositories(sortTime([...arrayRepositories]))
     }
-  }, [foundUser])
-
+  }, [userId, foundUser])
 
   return (
     <div className="flex flex-col w-full md:pl-4">
