@@ -59,7 +59,7 @@ Follow the steps below to run the application:
    - Click on "New OAuth App" to create a new OAuth application.
    - Provide the necessary details for your application.
    - Set the authorization callback URL to the URL where your application will be running.
-   - Once the OAuth app is created, you will receive a client ID. Make a note of it.
+   - Once the OAuth app is created, you will receive a client ID and a secret ID. Make a note of it.
 4. Create a `.env` file in the root directory of the project.
 5. Copy the client ID obtained from the OAuth app and add it to the `.env` file as follows:
    ```
