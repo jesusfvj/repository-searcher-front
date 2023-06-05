@@ -11,7 +11,7 @@ This is a frontend application built with React, Vite, TypeScript, and Tailwind 
 - Retrieve personal access token from GitHub
 - Display user's personal information and repositories!
 
-[Captura de pantalla 2023-06-05 a las 11 54 37](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/135d060b-11e7-43ed-b5d1-5cb80fbd5617)
+![Captura de pantalla 2023-06-05 a las 11 54 37](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/135d060b-11e7-43ed-b5d1-5cb80fbd5617)
 
 - Filter repositories based on various criteria
 
