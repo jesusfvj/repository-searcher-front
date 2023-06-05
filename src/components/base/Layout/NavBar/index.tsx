@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { useUI } from "../../../../context/UI/UIContext"
 import { Logo } from "../../Logo"
 import { ProfilePhoto } from "../../ProfilePhoto"
 import { Icons } from "./NavBarComponents/Icons"
@@ -9,24 +8,26 @@ import { NavBarResponsive } from "./NavBarResponsive"
 import { ProfileDropdown } from "./ProfileDropdown"
 
 export const NavBar = () => {
-    const { setShowWorkInProgress } = useUI()
     const [showLogOut, setShowLogOut] = useState<boolean>(false)
 
+    const handleBackToDashboard = () => {
+        window.location.href = "http://localhost:5173/dashboard";
+    }
     return (
         <>
             <nav className="relative hidden md:flex w-screen h-full bg-[#161B22] justify-between items-center px-8">
                 <div className="flex justify-center items-center gap-4">
-                    <Logo type="big" color="white" onClick={()=> setShowWorkInProgress(true)}/>
+                    <Logo type="big" color="white" onClick={handleBackToDashboard} />
                     <SearchBar />
                     <SearchTitles />
                 </div>
                 <div className="flex justify-center items-center gap-3"
-                onClick={()=>setShowLogOut(true)}>
+                    onClick={() => setShowLogOut(true)}>
                     <Icons />
                     <ProfilePhoto size="sm" icon={true} />
                 </div>
                 {showLogOut &&
-                <ProfileDropdown setShowLogOut={setShowLogOut}/>
+                    <ProfileDropdown setShowLogOut={setShowLogOut} />
                 }
             </nav>
             {/**

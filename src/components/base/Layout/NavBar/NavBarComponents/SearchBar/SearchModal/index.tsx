@@ -15,20 +15,20 @@ interface SearchModalProps {
 
 export const SearchModal = ({ toggleInputModal }: SearchModalProps): JSX.Element => {
     const { user } = useUser()
-    const { repositories } = useUI()
+    const { repositories, foundUser } = useUI()
     const [showFollowers, setShowFollowers] = useState<boolean>(false)
     const [userNameToShow, setUserNameToShow] = useState<string>("")
     const [repositoriesToShow, setRepositoriesToShow] = useState<Repository[]>([])
     const { setShowWorkInProgress } = useUI()
-    const [searchInput, setSearchInput] = useState<string>(`owner:${user?.userData?.login}/`);
+    const [searchInput, setSearchInput] = useState<string>(`owner:${foundUser?.id ? foundUser?.login : user?.userData?.login}/`);
 
     const redirectToGitHub = (url: string) => {
         window.open(url, "_blank");
     }
 
     useEffect(() => {
-        highlightString(user?.userData?.login)
-        setUserNameToShow(user?.userData?.login)
+        highlightString(foundUser?.id ? foundUser?.login : user?.userData?.login)
+        setUserNameToShow(foundUser?.id ? foundUser?.login : user?.userData?.login)
         setRepositoriesToShow(repositories)
     }, [])
 
@@ -88,7 +88,7 @@ export const SearchModal = ({ toggleInputModal }: SearchModalProps): JSX.Element
                 <div className="w-full px-2 py-6 flex flex-col gap-2 border-b border-[#33363b] overflow-scroll">
                     {
                         showFollowers ?
-                            <ShowFollowersComponent toggleInputModal={toggleInputModal}/>
+                            <ShowFollowersComponent toggleInputModal={toggleInputModal} />
                             :
                             repositoriesToShow && repositoriesToShow.length !== 0 &&
                             repositoriesToShow.map((repository, index) => {

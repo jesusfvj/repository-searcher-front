@@ -11,12 +11,14 @@ import { checkTokenExpired } from "../utils/tokenExpiredValidator"
 export const Dashboard = () => {
   const navigate = useNavigate()
   const [render, setRender] = useState<boolean>(false)
-  const { setMessageErrorToaster, setIsExpired } = useUI()
+  const { setMessageErrorToaster, setIsExpired, setIsLoading } = useUI()
   const { user, getUserDataContext } = useUser()
 
   useEffect(() => {
     const getUserData = async () => {
+      setIsLoading(true)
       const response = await getUserDataContext(user?.accessToken);
+      setIsLoading(false)
       if (!response.ok) {
         const isExpired = checkTokenExpired(response.data)
         if (isExpired) {

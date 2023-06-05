@@ -11,13 +11,13 @@ interface SearchModalProps {
 }
 
 export const ShowFollowersComponent = ({ toggleInputModal }: SearchModalProps): JSX.Element => {
-    
     const { user } = useUser()
     const navigate = useNavigate()
     const { friendsArray,
         setFriendsArray } = useUI()
 
     const redirectToUsersPage = async (userId: string) => {
+        console.log(userId)
         navigate(`/user/${userId}`)
         toggleInputModal()
     }

@@ -25,6 +25,11 @@ export const UserPage = () => {
     setRender(!render)
   }, [user])
 
+  useEffect(() => {
+    const foundUserObject = friendsArray.find(obj => obj.id === userId);
+    setFoundUser(foundUserObject)
+  }, [userId])
+
   return (
     <>
       <div className="hidden md:flex md:flex-col w-full h-full">
