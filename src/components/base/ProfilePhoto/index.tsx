@@ -1,20 +1,26 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Typography } from "../Typography";
 import { VscTriangleDown } from "react-icons/vsc";
 import { AiOutlineSmile } from "react-icons/ai";
 import { useUser } from "../../../context/UserContext/UserContext";
+import { useUI } from "../../../context/UI/UIContext";
+import { useParams } from "react-router-dom";
 
 interface ProfilePhotoProp {
     size: "lg" | "md" | "sm" | "xxl";
     icon?: boolean;
     editProfile?: boolean;
-    onClick?: ()=>void;
+    onClick?: () => void;
+    followerUrl?: string;
 }
 
-export const ProfilePhoto = ({ size = "md", icon = false, editProfile = false, onClick }: ProfilePhotoProp): JSX.Element => {
-    const {user} = useUser()
+export const ProfilePhoto = ({ size = "md", icon = false, editProfile = false, onClick, followerUrl }: ProfilePhotoProp): JSX.Element => {
+    const { user } = useUser()
+    const { foundUser } = useUI()
+    const { userId } = useParams()
     const [isHovered, setIsHovered] = useState<boolean>(false)
     const [isHoveredStatus, setIsHoveredStatus] = useState<boolean>(false)
+    const [url, setUrl] = useState<string>(user?.userData?.avatarUrl)
 
     const types: Record<string, string> = {
         xxl: `w-[22vw] h-[22vw]`,
@@ -23,6 +29,15 @@ export const ProfilePhoto = ({ size = "md", icon = false, editProfile = false, o
         sm: `w-[2vw] h-[2vw]`,
     };
 
+    useEffect(() => {
+        if (followerUrl) {
+            setUrl(followerUrl)
+        } else {
+            setUrl(user?.userData?.avatarUrl)
+        }
+    }, [user])
+
+
     return (
         <div className="relative flex justify-center items-center rounded-full"
             onMouseEnter={() => setIsHovered(true)}
@@ -30,7 +45,7 @@ export const ProfilePhoto = ({ size = "md", icon = false, editProfile = false, o
             onClick={onClick}
         >
             <div className={`rounded-full border border-[#666d74] ${types[size]} cursor-pointer`}>
-                <img src={user?.userData?.avatarUrl} alt="profile photo" className="w-full h-full rounded-full" />
+                <img src={userId ? foundUser?.avatarUrl : url} alt="profile photo" className="w-full h-full rounded-full" />
             </div>
             {icon &&
                 <Typography

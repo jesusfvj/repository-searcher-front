@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { RxCross1 } from "react-icons/rx"
 import { TiTick } from "react-icons/ti"
 import { useUI } from "../../../../../../../context/UI/UIContext";
+import { Repository } from "../../../../../../../interface/repository";
 import { Typography } from "../../../../../../base/Typography"
 
 interface LanguageDropdownProps {
@@ -9,21 +10,43 @@ interface LanguageDropdownProps {
 }
 
 export const LanguageDropdown: React.FC<LanguageDropdownProps> = ({ setActiveDropdown }) => {
-    const { repositories, setSortedRepositories, selectedLanguageFilter, setSelectedLanguageFilter, setSearchInput, setIsSearching } = useUI()
+    const { repositories, setSortedRepositories, selectedLanguageFilter, setSelectedLanguageFilter, setSearchInput, setIsSearching, selectedTypeFilter, arrayLanguages, setArrayLanguages } = useUI()
     const [arrayTitles, setArrayTitles] = useState<string[]>([]);
-    const [arrayLanguages, setArrayLanguages] = useState<string[]>([]);
 
     const handleSelectFilter = (e: React.MouseEvent<HTMLDivElement>, selectedOption: string) => {
         setSearchInput("")
         setIsSearching(false)
         setSelectedLanguageFilter(selectedOption)
+        let firstFilterArray:Repository[] = []
         const copyRepositories = [...repositories]
+
+        switch (selectedTypeFilter) {
+            case "All":
+                firstFilterArray = copyRepositories;
+                break;
+            case "Private":
+                const privateRepositories = copyRepositories.filter(repo => repo.isPrivate === true);
+                firstFilterArray = privateRepositories;
+                break;
+            case "Public":
+                const publicRepositories = copyRepositories.filter(repo => repo.isPrivate === false);
+                firstFilterArray = publicRepositories;
+                break;
+            case "Forks":
+                const forkedRepositories = copyRepositories.filter(repo => repo.forkCount !== 0);
+                firstFilterArray = forkedRepositories;
+                break;
+
+            default:
+                break;
+        }
+
         arrayLanguages.forEach((language) => {
             if (selectedOption === "All") {
-                setSortedRepositories(copyRepositories)
+                setSortedRepositories(firstFilterArray)
             } else if (selectedOption === language) {
-                const privateRepositories = copyRepositories.filter(repo => repo?.primaryLanguage?.name === selectedOption);
-                setSortedRepositories(privateRepositories)
+                const secondFilterRepositories = firstFilterArray.filter(repo => repo?.primaryLanguage?.name === selectedOption);
+                setSortedRepositories(secondFilterRepositories)
             }
         })
         e.stopPropagation();

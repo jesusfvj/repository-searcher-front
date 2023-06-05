@@ -3,11 +3,21 @@ import { Typography } from "../../../../Typography"
 import { ProfilePhoto } from "../../../../ProfilePhoto"
 import { GoSignOut } from "react-icons/go"
 import { useState } from "react"
+import { useUser } from "../../../../../../context/UserContext/UserContext"
+import { useNavigate } from "react-router-dom"
 
 export const SearchTitles = () => {
   const { setShowWorkInProgress } = useUI()
   const [isHovered, setIsHovered] = useState<boolean>(false)
-  const userNickName = "jesusfvj"
+  const { user, logout } = useUser()
+  const navigate = useNavigate()
+
+  const handleLogOut = () => {
+    const response = logout()
+    if(response){
+      navigate('/')
+    }
+  }
 
   return (
     <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-2 md:gap-4 py-3 md:py-0">
@@ -70,7 +80,7 @@ export const SearchTitles = () => {
       <div className="flex gap-2 md:hidden items-center border-t border-[#33363b] md:border-0 w-full md:w-fit pt-2 md:pt-0">
         <ProfilePhoto size="md" />
         <Typography
-          text={userNickName}
+          text={user?.userData?.login}
           type="p3"
           color="white"
           styles="cursor-pointer hover:text-[#BABBBD] md:hidden"
@@ -80,7 +90,7 @@ export const SearchTitles = () => {
       <div className="flex gap-2 md:hidden items-center border-t border-[#33363b] md:border-0 w-full md:w-fit pt-2 md:pt-0"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        onClick={() => setShowWorkInProgress(true)}>
+        onClick={handleLogOut}>
         <Typography
           text={<GoSignOut />}
           type="p3"

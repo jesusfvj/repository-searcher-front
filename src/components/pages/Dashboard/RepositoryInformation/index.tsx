@@ -6,6 +6,7 @@ import { TitleSortedRepositories } from "./TitleSortedRepositories";
 import { RepositoryComponents } from "./RepositoryComponents"
 import { SearchHeader } from "./SearchHeader"
 import { sortTime } from "../../../../utils/sort";
+import { useParams } from "react-router-dom";
 
 export const RepositoryInformation = () => {
   const { sortedRepositories,
@@ -14,9 +15,11 @@ export const RepositoryInformation = () => {
     selectedTypeFilter,
     selectedLanguageFilter,
     isSearching,
-    searchedRepositories
+    searchedRepositories,
+    foundUser
   } = useUI()
   const { user } = useUser()
+  const { userId } = useParams()
 
   useEffect(() => {
     if (user?.userData?.repositories?.nodes) {
@@ -26,6 +29,17 @@ export const RepositoryInformation = () => {
       setSortedRepositories(sortTime([...arrayRepositories]))
     }
   }, [user])
+
+  useEffect(() => {
+    if (userId && foundUser && Object.keys(foundUser).length !== 0) {
+      console.log(foundUser)
+      const arrayRepositories = foundUser?.repositories?.nodes
+      /**Set the default order of the repositories to last updated */
+      setRepositories(sortTime([...arrayRepositories]))
+      setSortedRepositories(sortTime([...arrayRepositories]))
+    }
+  }, [foundUser])
+
 
   return (
     <div className="flex flex-col w-full md:pl-4">

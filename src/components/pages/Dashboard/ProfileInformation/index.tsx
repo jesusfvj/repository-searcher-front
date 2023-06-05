@@ -8,17 +8,18 @@ import { PersonalInfo } from "./PersonalInfo"
 import { useState } from "react"
 import { AiOutlineSmile } from "react-icons/ai"
 import { useUser } from "../../../../context/UserContext/UserContext"
+import { useParams } from "react-router-dom"
 
 export const ProfileInformation = () => {
-    const {user} = useUser()
+    const { user } = useUser()
     const [isHovered, setIsHovered] = useState<boolean>(false)
-
-    const { setShowWorkInProgress } = useUI()
+    const { setShowWorkInProgress, foundUser } = useUI()
+    const { userId } = useParams()
 
     return (
         <div className="flex flex-col justify-start gap-8 w-full md:w-1/4 h-full pb-10 px-3 md:px-0">
             <div className="flex flex-row md:flex-col gap-8 pt-8 md:pt-0">
-                <ProfilePhoto size="xxl" editProfile={true} onClick={() => setShowWorkInProgress(true)}/>
+                <ProfilePhoto size="xxl" editProfile={true} onClick={() => setShowWorkInProgress(true)} />
                 <UserTitle />
             </div>
             {/** The following element only shows in small resolution: */}
@@ -31,16 +32,16 @@ export const ProfileInformation = () => {
                     type="p1"
                     color={`${isHovered ? 'blue' : 'gray'}`}
                 />
-                    <Typography
-                        text="Set status"
-                        type="p4"
-                        color={`${isHovered ? 'blue' : 'gray'}`}
-                        styles="mt-[0.1rem]"
-                    />
+                <Typography
+                    text="Set status"
+                    type="p4"
+                    color={`${isHovered ? 'blue' : 'gray'}`}
+                    styles="mt-[0.1rem]"
+                />
             </div>
             <div className="flex flex-col gap-5">
                 <Typography
-                    text={user?.userData?.bio}
+                    text={userId ? foundUser?.bio : user?.userData?.bio}
                     type="p2"
                     color="white"
                 />

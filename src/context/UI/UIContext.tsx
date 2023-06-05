@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { Props } from "../../interface/children";
+import { FollowerFollowing } from "../../interface/followerFollowing";
 import { Repository } from "../../interface/repository";
 
 export const UIContext = createContext<UIContextType>({} as UIContextType);
@@ -19,6 +20,12 @@ type UIContextType = {
   setSearchedRepositories: (searchedRepositories: Repository[]) => void;
   setIsSearching: (isSearching: boolean) => void;
   setSearchInput: (searchInput: string) => void;
+  setFriendsArray: (friendsArray: FollowerFollowing[]) => void;
+  setArrayLanguages: (arrayTitles: string[]) => void;
+  arrayLanguages: string[];
+  foundUser: any;
+  setFoundUser: any;
+  friendsArray: FollowerFollowing[];
   searchInput: string;
   searchedRepositories: Repository[];
   isSearching: boolean;
@@ -41,6 +48,8 @@ export const useUI = (): UIContextType => {
 };
 
 export const UIProvider = ({ children }: Props) => {
+  const [arrayLanguages, setArrayLanguages] = useState<string[]>([]);
+  const [friendsArray, setFriendsArray] = useState<FollowerFollowing[]>([])
   const [selectedSortFilter, setSelectedSortFilter] = useState<string>("Last updated");
   const [selectedLanguageFilter, setSelectedLanguageFilter] = useState<string>("All");
   const [selectedTypeFilter, setSelectedTypeFilter] = useState<string>("All");
@@ -55,6 +64,8 @@ export const UIProvider = ({ children }: Props) => {
   const [isSearching, setIsSearching] = useState<boolean>(false);
   const [showWorkInProgress, setShowWorkInProgress] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>("");
+  const [foundUser, setFoundUser] = useState({});
+
 
 
 
@@ -88,7 +99,13 @@ export const UIProvider = ({ children }: Props) => {
         isSearching,
         setIsSearching,
         searchInput,
-        setSearchInput
+        setSearchInput,
+        friendsArray,
+        setFriendsArray,
+        foundUser,
+        setFoundUser,
+        arrayLanguages,
+        setArrayLanguages
       }}
     >
       {children}

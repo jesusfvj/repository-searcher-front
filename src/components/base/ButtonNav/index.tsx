@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+import { useParams } from "react-router-dom";
+import { useUI } from "../../../context/UI/UIContext";
 import { useUser } from "../../../context/UserContext/UserContext";
 import { Typography } from "../Typography"
 
@@ -10,6 +12,8 @@ interface ButtonNavProps {
 
 export const ButtonNav = ({ icon, text, onClick }: ButtonNavProps): JSX.Element => {
     const {user} = useUser()
+    const {foundUser} = useUI()
+    const {userId} = useParams()
 
     return (
         <>
@@ -27,7 +31,7 @@ export const ButtonNav = ({ icon, text, onClick }: ButtonNavProps): JSX.Element 
                 />
                 {text === "Repositories" &&
                     <Typography
-                        text={user?.userData?.repositories?.totalCount}
+                        text={userId?foundUser?.repositories?.totalCount:user?.userData?.repositories?.totalCount}
                         type="p3"
                         color="white"
                         styles="bg-[#40464D] rounded-full px-2"
