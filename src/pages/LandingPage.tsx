@@ -9,7 +9,7 @@ export const LandingPage = () => {
   const [isTryingToLogIn, setIsTryingToLogIn] = useState<boolean>(false)
   const navigate = useNavigate()
   const { login } = useUser()
-  const { setMessageSuccessToaster, setMessageErrorToaster, isExpired, setIsExpired } = useUI()
+  const { setMessageSuccessToaster, setMessageErrorToaster, isExpired, setIsExpired, setIsLoading } = useUI()
   const loginWithGitHub = () => {
     const clientId = import.meta.env.VITE_CLIENT_ID;
     window.location.assign(`https://github.com/login/oauth/authorize?client_id=${clientId}`)
@@ -26,7 +26,9 @@ export const LandingPage = () => {
     const codeParam = urlParams.get("code");
     if (codeParam) {
       const loginUser = async () => {
+        setIsLoading(true)
         const response = await login(codeParam);
+        setIsLoading(false)
         if (response.ok) {
           setMessageSuccessToaster("Login with GitHub succesful.")
           setIsExpired(false)

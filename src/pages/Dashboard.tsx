@@ -15,25 +15,27 @@ export const Dashboard = () => {
   const { user, getUserDataContext } = useUser()
 
   useEffect(() => {
-    const getUserData = async () => {
-      setIsLoading(true)
-      const response = await getUserDataContext(user?.accessToken);
-      setIsLoading(false)
-      if (!response.ok) {
-        const isExpired = checkTokenExpired(response.data)
-        if (isExpired) {
-          setIsExpired(true)
-          navigate("/")
+    if (!user?.userData) {
+      const getUserData = async () => {
+        setIsLoading(true)
+        const response = await getUserDataContext();
+        setIsLoading(false)
+        if (!response.ok) {
+          const isExpired = checkTokenExpired(response.data)
+          if (isExpired) {
+            setIsExpired(true)
+            navigate("/")
+          }
+          setMessageErrorToaster("There was a problem retrieving your user.")
         }
-        setMessageErrorToaster("There was a problem retrieving your user.")
-      }
-    };
-    getUserData();
+      };
+      getUserData();
+    }
   }, [])
 
-useEffect(() => {
-  setRender(!render)
-}, [user])
+  useEffect(() => {
+    setRender(!render)
+  }, [user])
 
   return (
     <>

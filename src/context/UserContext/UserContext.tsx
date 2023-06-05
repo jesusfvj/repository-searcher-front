@@ -1,9 +1,8 @@
 import { useEffect, createContext, useReducer } from "react";
 import { useContext } from "react";
 import { getAccessTokenAPI } from "../../API/user.api";
-import { getUserDataAPI } from "../../API/graphql.api";
+import { getUserDataAPI } from "../../API/user.api";
 import { Props } from "../../interface/children";
-import { retrieveAccessToken } from "../../utils/stringManipulation";
 import { types } from "../Types/types";
 import { userReducer } from "./UserReducer";
 
@@ -14,7 +13,6 @@ type UserContextType = {
   logout: () => boolean,
   getUserDataContext: (accessToken?: string) => Promise<{ ok: boolean; data: string; }>,
   user:any;
-  /* user: UserResponse | null; */
 };
 
 export const useUser = (): UserContextType => {
@@ -24,9 +22,6 @@ export const useUser = (): UserContextType => {
 
 export const UserProvider = ({ children }: Props) => {
 
-  /* const init = async () => {
-  };
- */
   const [userState, dispatch] = useReducer(userReducer, { user: null }, undefined);
 
   useEffect(() => {
@@ -35,17 +30,17 @@ export const UserProvider = ({ children }: Props) => {
   const login = async (codeParam: string) => {
     const response = await getAccessTokenAPI(codeParam)
     if (response.ok) {
-      const accessToken = retrieveAccessToken(response.data)
-      localStorage.setItem("token", response.token)
-      dispatch({ type: types.login, payload: { accessToken } });
+      localStorage.setItem("token", response.data.token)
+      dispatch({ type: types.login, payload: { userData: response.data.userData } });
     }
     return response
   };
 
-  const getUserDataContext = async (accessToken: string | undefined = "") => {
-    const response = await getUserDataAPI(accessToken)
+  const getUserDataContext = async () => {
+    const response = await getUserDataAPI()
+    console.log(response)
     if (response.ok) {
-      dispatch({ type: types.login, payload: { userData: response.data } });
+      dispatch({ type: types.login, payload: { userData: response.userData.userData } });
     }
     return response
   }

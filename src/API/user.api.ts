@@ -10,16 +10,16 @@ export const getAccessTokenAPI = async (codeParam: string) => {
   }
 };
 
-export const getUserDataAPI = async (accessToken: string) => {
+export const getUserDataAPI = async () => {
   try {
     const response = await axios.get(`${BASE_URL_USER}/getUserData`, {
       headers: {
-        "Authorization": `Bearer ${accessToken}`,
         "x-token": window.localStorage.getItem("token"),
       }
     });
+    console.log(response)
     return response.data;
-  } catch (error:any) {
+  } catch (error: any) {
     if (error?.response?.data) {
       return error.response.data
     }
