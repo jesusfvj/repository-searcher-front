@@ -9,6 +9,9 @@ This is a frontend application built with React, Vite, TypeScript, and Tailwind 
 ![Captura de pantalla 2023-06-05 a las 11 53 54](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/0ba7a2b2-df7c-40dd-b238-91d39210e932)
 
 ### - Retrieve personal access token from GitHub
+
+![Captura de pantalla 2023-06-05 a las 16 02 21](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/3b4209d0-6e1c-4e40-9628-89ba897e9cbd)
+
 ### - Display user's personal information and repositories!
 
 ![Captura de pantalla 2023-06-05 a las 11 54 37](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/135d060b-11e7-43ed-b5d1-5cb80fbd5617)
@@ -27,6 +30,8 @@ This is a frontend application built with React, Vite, TypeScript, and Tailwind 
 ![Captura de pantalla 2023-06-05 a las 11 55 53](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/c69a9518-fd6f-41e8-a747-e2f09671346e)
 
 ### - Search and view profiles of followers and following users
+
+-In the input type owner: to show users. owner: + your username will display and filter the repositories.
 
 ![Captura de pantalla 2023-06-05 a las 11 56 02](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/82e68b35-e9ba-459b-884f-3bbe6c6c8bd3)
 ![Captura de pantalla 2023-06-05 a las 11 56 18](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/64e8d006-97a3-4be3-89cc-5114af2373d3)
