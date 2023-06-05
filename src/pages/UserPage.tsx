@@ -17,7 +17,7 @@ export const UserPage = () => {
     const foundUserObject = friendsArray.find(obj => obj.id === userId);
     setFoundUser(foundUserObject)
     if (!foundUserObject) {
-      window.location.href = "http://localhost:5173/dashboard";
+      window.location.href = import.meta.env.VITE_BASE_UR + "/dashboard";
     }
   }, []);
 

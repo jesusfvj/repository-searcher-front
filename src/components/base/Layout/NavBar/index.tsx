@@ -11,7 +11,7 @@ export const NavBar = () => {
     const [showLogOut, setShowLogOut] = useState<boolean>(false)
 
     const handleBackToDashboard = () => {
-        window.location.href = "http://localhost:5173/dashboard";
+        window.location.href = import.meta.env.VITE_BASE_UR + "/dashboard";
     }
     return (
         <>
