@@ -1,6 +1,5 @@
 import axios from "axios";
-import { BASE_URL } from "../utils/FetchRoutes";
-const BASE_URL_USER = BASE_URL + "/user"
+const BASE_URL_USER = import.meta.env.VITE_BASE_URL + "/user"
 
 export const getAccessTokenAPI = async (codeParam: string) => {
   try {

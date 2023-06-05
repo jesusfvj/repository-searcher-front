@@ -32,7 +32,6 @@ export const Dashboard = () => {
   }, [])
 
 useEffect(() => {
-  console.log(user)
   setRender(!render)
 }, [user])
 

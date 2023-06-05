@@ -17,7 +17,6 @@ export const ShowFollowersComponent = ({ toggleInputModal }: SearchModalProps): 
         setFriendsArray } = useUI()
 
     const redirectToUsersPage = async (userId: string) => {
-        console.log(userId)
         navigate(`/user/${userId}`)
         toggleInputModal()
     }

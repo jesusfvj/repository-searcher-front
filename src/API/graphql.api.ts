@@ -1,6 +1,6 @@
 import axios from "axios";
-import { BASE_URL } from "../utils/FetchRoutes";
-const BASE_URL_GRAPH = BASE_URL + "/graphql"
+
+const BASE_URL_GRAPH = import.meta.env.VITE_BASE_URL + "/graphql"
 
 export const getUserDataAPI = async (accessToken: string) => {
   try {
