@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { Logo } from "../../Logo"
 import { ProfilePhoto } from "../../ProfilePhoto"
 import { Icons } from "./NavBarComponents/Icons"
@@ -8,10 +9,11 @@ import { NavBarResponsive } from "./NavBarResponsive"
 import { ProfileDropdown } from "./ProfileDropdown"
 
 export const NavBar = () => {
+    const navigate = useNavigate()
     const [showLogOut, setShowLogOut] = useState<boolean>(false)
 
     const handleBackToDashboard = () => {
-        window.location.href = import.meta.env.VITE_BASE_URL_FRONT_END;
+        navigate(`${import.meta.env.VITE_BASE_URL_FRONT_END}/dashboard`)
     }
     return (
         <>
