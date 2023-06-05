@@ -5,6 +5,7 @@ This is a frontend application built with React, Vite, TypeScript, and Tailwind 
 ## Features
 
 - <u>User authentication using GitHub login</u>
+- <u>This text will be underlined</u>
 
 ![Captura de pantalla 2023-06-05 a las 11 53 54](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/0ba7a2b2-df7c-40dd-b238-91d39210e932)
 
