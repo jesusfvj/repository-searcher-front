@@ -29,6 +29,7 @@ export const UserProvider = ({ children }: Props) => {
 
   const login = async (codeParam: string) => {
     const response = await getAccessTokenAPI(codeParam)
+    console.log(response)
     if (response.ok) {
       localStorage.setItem("token", response.data.token)
       dispatch({ type: types.login, payload: { userData: response.data.userData } });
