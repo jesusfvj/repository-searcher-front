@@ -55,7 +55,7 @@ export const ProfilePhoto = ({ size = "md", icon = false, editProfile = false, o
                     styles={`cursor-pointer ${isHovered && "text-[#BABBBD]"}`}
                 />
             }
-            {editProfile &&
+            {editProfile && !userId &&
                 <div className={`hidden md:flex absolute ${isHoveredStatus ? '-right-[5.1vw]' : 'right-0'} bottom-11 flex justify-center items-center gap-2 w-fit h-fit p-2 bg-[#0D1117] rounded-full border border-[#666d74] cursor-pointer ${isHoveredStatus && 'shadow-lg'}`}
                     onMouseEnter={() => setIsHoveredStatus(true)}
                     onMouseLeave={() => setIsHoveredStatus(false)}>
@@ -74,7 +74,7 @@ export const ProfilePhoto = ({ size = "md", icon = false, editProfile = false, o
                     }
                 </div>
             }
-            {editProfile && isHovered && !isHoveredStatus &&
+            {editProfile && isHovered && !isHoveredStatus && !userId &&
                 <>
                     <div className="hidden md:flex absolute -bottom-5 bg-[#6E7681] h-4 w-4 rotate-45"></div>
                     <div className="absolute -bottom-10 bg-[#6E7681] w-[30vw] md:w-fit h-fit md:h-[5vh] py-2 md:py-0 px-3 rounded-lg flex justify-center items-center text-center">
