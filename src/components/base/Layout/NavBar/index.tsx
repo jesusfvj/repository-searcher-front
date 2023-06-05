@@ -13,7 +13,7 @@ export const NavBar = () => {
     const [showLogOut, setShowLogOut] = useState<boolean>(false)
 
     const handleBackToDashboard = () => {
-        navigate(`${import.meta.env.VITE_BASE_URL_FRONT_END}/dashboard`)
+        navigate('/dashboard')
     }
     return (
         <>
