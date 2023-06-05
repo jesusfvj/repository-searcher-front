@@ -17,7 +17,6 @@ export const getUserDataAPI = async () => {
         "x-token": window.localStorage.getItem("token"),
       }
     });
-    console.log(response)
     return response.data;
   } catch (error: any) {
     if (error?.response?.data) {

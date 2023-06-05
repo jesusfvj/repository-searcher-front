@@ -38,7 +38,6 @@ export const UserProvider = ({ children }: Props) => {
 
   const getUserDataContext = async () => {
     const response = await getUserDataAPI()
-    console.log(response)
     if (response.ok) {
       dispatch({ type: types.login, payload: { userData: response.userData.userData } });
     }

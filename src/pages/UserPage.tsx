@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { DashBoardResponsive } from "../components/pages/Dashboard/DashBoardResponsive"
 import { ProfileInformation } from "../components/pages/Dashboard/ProfileInformation"
 import { RepositoryInformation } from "../components/pages/Dashboard/RepositoryInformation"
@@ -8,6 +8,7 @@ import { useUI } from "../context/UI/UIContext"
 import { useUser } from "../context/UserContext/UserContext"
 
 export const UserPage = () => {
+  const navigate = useNavigate()
   const { userId } = useParams()
   const [render, setRender] = useState<boolean>(false)
   const { friendsArray, setFoundUser } = useUI()
@@ -17,7 +18,7 @@ export const UserPage = () => {
     const foundUserObject = friendsArray.find(obj => obj.id === userId);
     setFoundUser(foundUserObject)
     if (!foundUserObject) {
-      window.location.href = import.meta.env.VITE_BASE_URL_FRONT_END + "/dashboard";
+      navigate("/dashboard");
     }
   }, []);
 
