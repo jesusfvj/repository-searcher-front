@@ -8,30 +8,30 @@ This is a frontend application built with React, Vite, TypeScript, and Tailwind 
 
 ![Captura de pantalla 2023-06-05 a las 11 53 54](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/0ba7a2b2-df7c-40dd-b238-91d39210e932)
 
-- Retrieve personal access token from GitHub
-- Display user's personal information and repositories!
+### - Retrieve personal access token from GitHub
+### - Display user's personal information and repositories!
 
 ![Captura de pantalla 2023-06-05 a las 11 54 37](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/135d060b-11e7-43ed-b5d1-5cb80fbd5617)
 
-- Filter repositories based on various criteria
+### - Filter repositories based on various criteria
 
 ![Captura de pantalla 2023-06-05 a las 11 55 24](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/06b11fbd-2d9b-4dd9-902e-abe1b23ecbc7)
 
-- Sort repositories by name, last update, or number of stars
+### - Sort repositories by name, last update, or number of stars
 
 ![Captura de pantalla 2023-06-05 a las 12 09 31](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/3aefe04f-4306-4034-8f91-dfdb180ebd5b)
 
-- Search repositories using a query
+### - Search repositories using a query
 
 ![Captura de pantalla 2023-06-05 a las 11 55 03](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/74b6d071-bdfb-4356-bf98-873009685861)
 ![Captura de pantalla 2023-06-05 a las 11 55 53](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/c69a9518-fd6f-41e8-a747-e2f09671346e)
 
-- Search and view profiles of followers and following users
+### - Search and view profiles of followers and following users
 
 ![Captura de pantalla 2023-06-05 a las 11 56 02](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/82e68b35-e9ba-459b-884f-3bbe6c6c8bd3)
 ![Captura de pantalla 2023-06-05 a las 11 56 18](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/64e8d006-97a3-4be3-89cc-5114af2373d3)
 
-- Furthermore, a token generated in the backend using JSON Web Token (jsonwebtoken) is employed to maintain the user's session open. This token persists for 1 hour, allowing users to stay authenticated in the application without the need to repeatedly log in.
+### - Furthermore, a token generated in the backend using JSON Web Token (jsonwebtoken) is employed to maintain the user's session open. This token persists for 1 hour, allowing users to stay authenticated in the application without the need to repeatedly log in.
 
 
 ## Technologies Used
