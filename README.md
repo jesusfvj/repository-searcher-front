@@ -27,7 +27,7 @@ This is a frontend application built with React, Vite, TypeScript, and Tailwind 
 
 Follow the steps below to run the application:
 
-1. Clone the repository: `git clone [repository-url](https://github.com/jesusfvj/repository-searcher-front.git)`
+1. Clone the repository: `git clone https://github.com/jesusfvj/repository-searcher-front.git`
 2. Install the dependencies: `npm install`
 3. Create an OAuth app in your GitHub account:
    - Go to your GitHub account settings.
