@@ -33,6 +33,8 @@ export const LandingPage = () => {
           setMessageSuccessToaster("Login with GitHub succesful.")
           setIsExpired(false)
           navigate("/dashboard");
+        } else {
+          setMessageErrorToaster("Something happened. Please try again.")
         }
       };
       loginUser();
