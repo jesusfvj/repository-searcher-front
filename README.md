@@ -91,9 +91,10 @@ The application is designed to be responsive, with a break point set at 768px. T
 
 For the design, I usually use Figma, although on this occasion, it wasn't necessary as I took inspiration from GitHub's own website. I utilized a couple of Google extensions, a color picker, and What Font, to identify the colors and font styles. As a result, the final outcome closely resembles the GitHub website.
 
-|         |         |         |         |
-|---------|---------|---------|---------|
-| ![Image 1](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/e3164188-c29d-49ac-92a9-a6e7e61abad4) | ![Image 2](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/ade45959-a267-4e79-96e3-f7f220e42aa7) | ![Image 3](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/42726e1e-faae-459e-98ad-7a33afd81fb5) | ![Image 4](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/8f03b27a-5b6a-4d3a-9a09-524c4961b61b) |
+|         |         |
+|---------|---------|
+| ![Image 1](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/e3164188-c29d-49ac-92a9-a6e7e61abad4) | ![Image 2](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/ade45959-a267-4e79-96e3-f7f220e42aa7) | 
+| ![Image 3](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/42726e1e-faae-459e-98ad-7a33afd81fb5) | ![Image 4](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/8f03b27a-5b6a-4d3a-9a09-524c4961b61b) |
 
 
 ![Captura de pantalla 2023-06-05 a las 12 00 14](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/e3164188-c29d-49ac-92a9-a6e7e61abad4)
