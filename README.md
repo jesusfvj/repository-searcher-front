@@ -83,7 +83,7 @@ The backend server stores the retrieved data in a MongoDB database to ensure per
 
 The application is designed to be responsive, with a break point set at 768px. This ensures that phones and tablets can navigate easily, while small and larger laptops can enjoy the full resolution experience.
 
-<div style="display: flex; flex-wrap: wrap; gap: 0.1rem; justify-content: center;">
+<div style="width:100vw; display: flex; flex-wrap: wrap; gap: 0.1rem; justify-content: center;">
   <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/9ac85d97-9102-4ff5-bc02-b0faaa8aa5f1" alt="Image 1" style="width: 20%; max-width: 200px; margin: 5px;">
   <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/7abc803e-d3ec-437c-950a-e8226d852d0e" alt="Image 2" style="width: 20%; max-width: 200px; margin: 5px;">
   <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/4a760978-c6ff-441c-8cc2-6f4d95da34ee" alt="Image 3" style="width: 20%; max-width: 200px; margin: 5px;">
