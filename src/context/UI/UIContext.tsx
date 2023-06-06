@@ -22,6 +22,8 @@ type UIContextType = {
   setSearchInput: (searchInput: string) => void;
   setFriendsArray: (friendsArray: FollowerFollowing[]) => void;
   setArrayLanguages: (arrayTitles: string[]) => void;
+  setSortedFriendsArray: (sortedFriendsArray: FollowerFollowing[]) => void;
+  sortedFriendsArray: FollowerFollowing[];
   arrayLanguages: string[];
   foundUser: any;
   setFoundUser: any;
@@ -49,6 +51,7 @@ export const useUI = (): UIContextType => {
 
 export const UIProvider = ({ children }: Props) => {
   const [arrayLanguages, setArrayLanguages] = useState<string[]>([]);
+  const [sortedFriendsArray, setSortedFriendsArray] = useState<FollowerFollowing[]>([])
   const [friendsArray, setFriendsArray] = useState<FollowerFollowing[]>([])
   const [selectedSortFilter, setSelectedSortFilter] = useState<string>("Last updated");
   const [selectedLanguageFilter, setSelectedLanguageFilter] = useState<string>("All");
@@ -105,7 +108,9 @@ export const UIProvider = ({ children }: Props) => {
         foundUser,
         setFoundUser,
         arrayLanguages,
-        setArrayLanguages
+        setArrayLanguages,
+        sortedFriendsArray,
+        setSortedFriendsArray
       }}
     >
       {children}

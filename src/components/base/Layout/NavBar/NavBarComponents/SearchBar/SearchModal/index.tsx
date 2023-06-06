@@ -15,11 +15,10 @@ interface SearchModalProps {
 
 export const SearchModal = ({ toggleInputModal }: SearchModalProps): JSX.Element => {
     const { user } = useUser()
-    const { repositories, foundUser } = useUI()
+    const { repositories, foundUser, friendsArray, setShowWorkInProgress, setSortedFriendsArray } = useUI()
     const [showFollowers, setShowFollowers] = useState<boolean>(false)
     const [userNameToShow, setUserNameToShow] = useState<string>("")
     const [repositoriesToShow, setRepositoriesToShow] = useState<Repository[]>([])
-    const { setShowWorkInProgress } = useUI()
     const [searchInput, setSearchInput] = useState<string>(`owner:${foundUser?.id ? foundUser?.login : user?.userData?.login}/`);
 
     const redirectToGitHub = (url: string) => {
@@ -33,26 +32,40 @@ export const SearchModal = ({ toggleInputModal }: SearchModalProps): JSX.Element
     }, [])
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const inputString = event.target.value
+        const inputString = event.target.value;
         setSearchInput(inputString);
-        if (inputString.includes(`owner:${userNameToShow}/`)) {
-            searchRepositories(inputString.replace(`owner:${userNameToShow}/`, ""))
-            setShowFollowers(false)
-        }
-        if (inputString === `owner:`) {
-            setShowFollowers(true)
+
+        if (inputString.startsWith('owner:')) {
+            if (inputString === 'owner:') {
+                setShowFollowers(true);
+                setSortedFriendsArray(friendsArray);
+            } else if (inputString.startsWith(`owner:${userNameToShow}/`)) {
+                const query = inputString.replace(`owner:${userNameToShow}/`, '');
+                searchRepositories(query);
+                setShowFollowers(false);
+            } else {
+                const query = inputString.replace('owner:', '');
+                searchUsers(query);
+                setShowFollowers(true);
+            }
         }
     };
 
     const searchRepositories = (query: string) => {
         const lowerCaseQuery = query.toLowerCase();
         const foundRepositories = repositories.filter(({ name }) => {
-            return (
-                (name && name.toLowerCase().includes(lowerCaseQuery))
-            );
+            return name && name.toLowerCase().includes(lowerCaseQuery);
         });
-        setRepositoriesToShow(foundRepositories)
-    }
+        setRepositoriesToShow(foundRepositories);
+    };
+
+    const searchUsers = (query: string) => {
+        const lowerCaseQuery = query.toLowerCase()
+        const foundUsers = [...friendsArray].filter((user) => {
+            return user && user.login.toLowerCase().includes(lowerCaseQuery);
+        });
+        setSortedFriendsArray(foundUsers);
+    };
 
 
     return (

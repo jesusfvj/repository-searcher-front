@@ -13,7 +13,7 @@ interface SearchModalProps {
 export const ShowFollowersComponent = ({ toggleInputModal }: SearchModalProps): JSX.Element => {
     const { user } = useUser()
     const navigate = useNavigate()
-    const { friendsArray,
+    const { sortedFriendsArray,
         setFriendsArray } = useUI()
 
     const redirectToUsersPage = async (userId: string) => {
@@ -30,8 +30,8 @@ export const ShowFollowersComponent = ({ toggleInputModal }: SearchModalProps): 
     return (
         <>
             {
-                friendsArray && friendsArray.length !== 0 &&
-                friendsArray.map((user, index) => {
+                sortedFriendsArray && sortedFriendsArray.length !== 0 &&
+                sortedFriendsArray.map((user, index) => {
                     return (
                         <div key={index}>
                             {index === 0 &&
@@ -45,7 +45,7 @@ export const ShowFollowersComponent = ({ toggleInputModal }: SearchModalProps): 
                             <div className="flex justify-between items-center w-full gap-4 hover:bg-[#21262B] cursor-pointer rounded px-4 py-2"
                                 onClick={() => redirectToUsersPage(user.id)}>
                                 <div className="flex justify-center items-center gap-4">
-                                    <ProfilePhoto size="md" followerUrl={user.avatarUrl}
+                                    <ProfilePhoto key={user.id} size="md" followerUrl={user.avatarUrl}
                                     />
                                     <Typography
                                         text={user.login}

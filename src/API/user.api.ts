@@ -4,7 +4,6 @@ const BASE_URL_USER = import.meta.env.VITE_BASE_URL + "/user"
 export const getAccessTokenAPI = async (codeParam: string) => {
   try {
     const response = await axios.get(`${BASE_URL_USER}/getAccessToken?code=${codeParam}`);
-console.log(response)
     return response.data;
   } catch (error) {
     return error
