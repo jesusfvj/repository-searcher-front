@@ -37,7 +37,7 @@ This is a frontend application built with React, Vite, TypeScript, and Tailwind 
  <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/82e68b35-e9ba-459b-884f-3bbe6c6c8bd3" alt="Image" width="70%">
  <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/64e8d006-97a3-4be3-89cc-5114af2373d3" alt="Image" width="70%">
 
-### - Furthermore, a token generated in the backend using JSON Web Token (jsonwebtoken) is employed to maintain the user's session open. This token persists for 1 hour, allowing users to stay authenticated in the application without the need to repeatedly log in.
+### - Additionally, a backend-generated token using JSON Web Token is used to keep the user's session active. This token remains valid for 1 hour, enabling continuous authentication without frequent login requirements.
 
  <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/b05dcbb5-94dc-463e-bdfe-32eba26a290b" alt="Image" width="70%">
 
