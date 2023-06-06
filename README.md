@@ -84,11 +84,8 @@ The backend server stores the retrieved data in a MongoDB database to ensure per
 The application is designed to be responsive, with a break point set at 768px. This ensures that phones and tablets can navigate easily, while small and larger laptops can enjoy the full resolution experience.
 |         |         |         |         |
 |---------|---------|---------|---------|
-| ![Image 1](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/9ac85d97-9102-4ff5-bc02-b0faaa8aa5f1) | ![Image 2](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/7abc803e-d3ec-437c-950a-e8226d852d0e) | ![Image 3](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/4a760978-c6ff-441c-8cc2-6f4d95da34ee) | ![Image 4](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/01b5a224-6d67-4fb6-94a7-f16cc34946bd) |
-| ![Image 5](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/0a6142bb-db91-4852-be3c-b77fc9e7cc44) | ![Image 6](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/bc9dd83e-211e-4c23-8cf2-4e0ddd9acec5) | ![Image 7](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/2a6c9354-48f4-4711-ac08-91bd0ec7ef29) |
-
-
-
+| ![Image 1](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/88aa6cba-316f-4838-a7df-4595408a4c02) | ![Image 2](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/9ac85d97-9102-4ff5-bc02-b0faaa8aa5f1) | ![Image 3](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/7abc803e-d3ec-437c-950a-e8226d852d0e) | ![Image 4](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/4a760978-c6ff-441c-8cc2-6f4d95da34ee) | ![Image 5](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/01b5a224-6d67-4fb6-94a7-f16cc34946bd) |
+| ![Image 6](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/0a6142bb-db91-4852-be3c-b77fc9e7cc44) | ![Image 7](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/bc9dd83e-211e-4c23-8cf2-4e0ddd9acec5) | ![Image 8](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/2a6c9354-48f4-4711-ac08-91bd0ec7ef29) |
 
 ## Design
 
