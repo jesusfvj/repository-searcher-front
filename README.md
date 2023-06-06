@@ -10,39 +10,36 @@ This is a frontend application built with React, Vite, TypeScript, and Tailwind 
 
 ### - Retrieve personal access token from GitHub
 
-
  <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/3b4209d0-6e1c-4e40-9628-89ba897e9cbd" alt="Image" width="70%">
- 
-![Captura de pantalla 2023-06-05 a las 16 02 21]()
+
 
 ### - Display user's personal information and repositories!
 
-![Captura de pantalla 2023-06-05 a las 11 54 37](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/135d060b-11e7-43ed-b5d1-5cb80fbd5617)
+ <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/135d060b-11e7-43ed-b5d1-5cb80fbd5617" alt="Image" width="70%">
 
 ### - Filter repositories based on various criteria
 
-![Captura de pantalla 2023-06-05 a las 11 55 24](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/06b11fbd-2d9b-4dd9-902e-abe1b23ecbc7)
+ <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/06b11fbd-2d9b-4dd9-902e-abe1b23ecbc7" alt="Image" width="70%">
 
 ### - Sort repositories by name, last update, or number of stars
 
-![Captura de pantalla 2023-06-05 a las 12 09 31](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/3aefe04f-4306-4034-8f91-dfdb180ebd5b)
+ <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/3aefe04f-4306-4034-8f91-dfdb180ebd5b" alt="Image" width="70%">
 
 ### - Search repositories using a query
 
-![Captura de pantalla 2023-06-05 a las 11 55 03](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/74b6d071-bdfb-4356-bf98-873009685861)
-![Captura de pantalla 2023-06-05 a las 11 55 53](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/c69a9518-fd6f-41e8-a747-e2f09671346e)
+ <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/74b6d071-bdfb-4356-bf98-873009685861" alt="Image" width="70%">
+ <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/c69a9518-fd6f-41e8-a747-e2f09671346e" alt="Image" width="70%">
 
 ### - Search and view profiles of followers and following users
 
 -In the input type owner: to show users. owner: + your username will display and filter the repositories.
 
-![Captura de pantalla 2023-06-05 a las 11 56 02](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/82e68b35-e9ba-459b-884f-3bbe6c6c8bd3)
-![Captura de pantalla 2023-06-05 a las 11 56 18](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/64e8d006-97a3-4be3-89cc-5114af2373d3)
+ <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/82e68b35-e9ba-459b-884f-3bbe6c6c8bd3" alt="Image" width="70%">
+ <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/64e8d006-97a3-4be3-89cc-5114af2373d3" alt="Image" width="70%">
 
 ### - Furthermore, a token generated in the backend using JSON Web Token (jsonwebtoken) is employed to maintain the user's session open. This token persists for 1 hour, allowing users to stay authenticated in the application without the need to repeatedly log in.
 
-![Captura de pantalla 2023-06-05 a las 12 29 47](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/b05dcbb5-94dc-463e-bdfe-32eba26a290b)
-
+ <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/b05dcbb5-94dc-463e-bdfe-32eba26a290b" alt="Image" width="70%">
 
 ## Technologies Used
 
