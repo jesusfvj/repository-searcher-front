@@ -79,6 +79,19 @@ The frontend application communicates with a backend server that handles the OAu
 
 The backend server stores the retrieved data in a MongoDB database to ensure persistent data availability.
 
+## Responsiveness
+
+The application is designed to be responsive, with a break point set at 768px. This ensures that phones and tablets can navigate easily, while small and larger laptops can enjoy the full resolution experience.
+
+![Screenshot_20230606_105439_com android chrome](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/9ac85d97-9102-4ff5-bc02-b0faaa8aa5f1)
+![Screenshot_20230606_105446_com android chrome](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/7abc803e-d3ec-437c-950a-e8226d852d0e)
+![Screenshot_20230606_105452_com android chrome](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/4a760978-c6ff-441c-8cc2-6f4d95da34ee)
+![Screenshot_20230606_105507_com android chrome](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/01b5a224-6d67-4fb6-94a7-f16cc34946bd)
+![Screenshot_20230606_105514_com android chrome](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/0a6142bb-db91-4852-be3c-b77fc9e7cc44)
+![Screenshot_20230606_105522_com android chrome](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/bc9dd83e-211e-4c23-8cf2-4e0ddd9acec5)
+![Screenshot_20230606_105539_com android chrome](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/2a6c9354-48f4-4711-ac08-91bd0ec7ef29)
+
+
 ## Design
 
 For the design, I usually use Figma, although on this occasion, it wasn't necessary as I took inspiration from GitHub's own website. I utilized a couple of Google extensions, a color picker, and What Font, to identify the colors and font styles. As a result, the final outcome closely resembles the GitHub website.
