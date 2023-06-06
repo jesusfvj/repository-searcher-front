@@ -23,7 +23,7 @@ export const TitleSortedRepositories = () => {
   } = useUI()
 
   const clearFilter = () => {
-    /**Set the default order to last updated */
+    /**Set the default order of the repositories to last updated */
     const copyArrayRepositories = [...repositories]
     const repositoriesSortByTime = sortTime(copyArrayRepositories)
     setSortedRepositories(repositoriesSortByTime)
@@ -36,25 +36,29 @@ export const TitleSortedRepositories = () => {
 
   return (
     <div className="w-full h-fit flex justify-between items-center border-b-[0.1rem] border-[#1f2328] py-6">
-      <div className="flex gap-1 justify-start items-center">
-        <Typography
-          type="p4"
-          color="blue"
-          text={isSearching ? searchedRepositories.length : sortedRepositories.length} />
-        <Typography
-          type="p4"
-          color="gray"
-          text="results for" />
-        <Typography
-          type="p4"
-          color="blue"
-          text={selectedTypeFilter} />
-        <Typography
-          type="p4"
-          color="gray"
-          text="repositories" />
+      <div className="flex flex-col md:flex-row gap-1 justify-start items-center">
+        <div className="flex gap-1 justify-start items-center">
+          <Typography
+            type="p4"
+            color="blue"
+            text={isSearching ? searchedRepositories.length : sortedRepositories.length} />
+          <Typography
+            type="p4"
+            color="gray"
+            text="results for" />
+        </div>
+        <div className="flex gap-1 justify-start items-center">
+          <Typography
+            type="p4"
+            color="blue"
+            text={selectedTypeFilter} />
+          <Typography
+            type="p4"
+            color="gray"
+            text="repositories" />
+        </div>
         {selectedLanguageFilter !== "All" &&
-          <>
+          <div className="flex gap-1 justify-start items-center">
             <Typography
               type="p4"
               color="gray"
@@ -63,16 +67,18 @@ export const TitleSortedRepositories = () => {
               type="p4"
               color="blue"
               text={selectedLanguageFilter} />
-          </>
+          </div>
         }
-        <Typography
-          type="p4"
-          color="gray"
-          text="sorted by" />
-        <Typography
-          type="p4"
-          color="blue"
-          text={selectedSortFilter} />
+        <div className="flex gap-1 justify-start items-center">
+          <Typography
+            type="p4"
+            color="gray"
+            text="sorted by" />
+          <Typography
+            type="p4"
+            color="blue"
+            text={selectedSortFilter} />
+        </div>
       </div>
       <div className="flex justify-center items-center gap-2 cursor-pointer"
         onMouseEnter={() => setIsHovered(true)}

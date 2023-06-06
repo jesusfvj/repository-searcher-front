@@ -27,10 +27,12 @@ export const NavBarResponsive = () => {
                     styles="cursor-pointer"
                     onClick={() => setShowSearchBar(!showSearchBar)}
                 />
-                <Logo
-                    type="veryImportant"
-                    color="white"
-                    onClick={handleBackToDashboard} />
+                <div className="rounded-full">
+                    <Logo
+                        type="important"
+                        color="white"
+                        onClick={handleBackToDashboard} />
+                </div>
                 <Typography
                     text={<BiBell />}
                     type="big"
