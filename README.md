@@ -6,14 +6,14 @@ This is a frontend application built with React, Vite, TypeScript, and Tailwind 
 
 ### - User authentication using GitHub login
 
- <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/0ba7a2b2-df7c-40dd-b238-91d39210e932" alt="Image" width="70%">
-
-
 ![Captura de pantalla 2023-06-05 a las 11 53 54](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/0ba7a2b2-df7c-40dd-b238-91d39210e932)
 
 ### - Retrieve personal access token from GitHub
 
-![Captura de pantalla 2023-06-05 a las 16 02 21](https://github.com/jesusfvj/repository-searcher-front/assets/119491399/3b4209d0-6e1c-4e40-9628-89ba897e9cbd)
+
+ <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/3b4209d0-6e1c-4e40-9628-89ba897e9cbd" alt="Image" width="70%">
+ 
+![Captura de pantalla 2023-06-05 a las 16 02 21]()
 
 ### - Display user's personal information and repositories!
 
