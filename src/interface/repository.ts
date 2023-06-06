@@ -8,11 +8,12 @@ export interface Repository {
     primaryLanguage: {
       name?: string
     },
-    forkedFrom: {
+    forkedFrom?: {
       name: string,
       htmlUrl: string
     },
-    lastUpdated: string,
+    lastUpdated?: string,
     forkCount: number,
     stargazerCount: number,
+    diskUsage?: number,
   }

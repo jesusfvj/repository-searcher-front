@@ -39,11 +39,20 @@ export const SearchModal = ({ toggleInputModal }: SearchModalProps): JSX.Element
             if (inputString === 'owner:') {
                 setShowFollowers(true);
                 setSortedFriendsArray(friendsArray);
-            } else if (inputString.startsWith(`owner:${userNameToShow}/`)) {
-                const query = inputString.replace(`owner:${userNameToShow}/`, '');
+            } else if (inputString === `owner:${foundUser?.id ? foundUser?.login : user?.userData?.login}/`) {
+                const query = inputString.replace(`owner:${foundUser?.id ? foundUser?.login : user?.userData?.login}/`, '');
                 searchRepositories(query);
                 setShowFollowers(false);
-            } else {
+                setUserNameToShow("");
+            } else if (inputString.endsWith('/')) {
+                const firstTrim = inputString.replace('owner:', '');
+                const query = firstTrim.replace('/', '');
+                const foundSingleUser = friendsArray.filter((user) => user && user.login === query)
+                const arrayRepositories: Repository[] = foundSingleUser[0]?.repositories?.nodes || [];
+                setRepositoriesToShow(arrayRepositories)
+                setShowFollowers(false)
+                setUserNameToShow(foundSingleUser[0].login)
+            }else {
                 const query = inputString.replace('owner:', '');
                 searchUsers(query);
                 setShowFollowers(true);
@@ -124,7 +133,7 @@ export const SearchModal = ({ toggleInputModal }: SearchModalProps): JSX.Element
                                                     color="gray"
                                                 />
                                                 <Typography
-                                                    text={`${userNameToShow}/${repository.name}/`}
+                                                    text={`${userNameToShow !=="" ? userNameToShow : foundUser?.id ? foundUser?.login : user?.userData?.login}/${repository.name}/`}
                                                     type="p3"
                                                     color="white"
                                                 />
