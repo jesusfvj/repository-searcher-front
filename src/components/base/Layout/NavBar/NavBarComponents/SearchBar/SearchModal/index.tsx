@@ -39,14 +39,14 @@ export const SearchModal = ({ toggleInputModal }: SearchModalProps): JSX.Element
             if (inputString === 'owner:') {
                 setShowFollowers(true);
                 setSortedFriendsArray(friendsArray);
-            } else if (inputString === `owner:${foundUser?.id ? foundUser?.login : user?.userData?.login}/`) {
+            } else if (inputString.startsWith(`owner:${foundUser?.id ? foundUser?.login : user?.userData?.login}/`)) {
                 const query = inputString.replace(`owner:${foundUser?.id ? foundUser?.login : user?.userData?.login}/`, '');
                 searchRepositories(query);
                 setShowFollowers(false);
                 setUserNameToShow("");
             } else if (inputString.endsWith('/')) {
                 const firstTrim = inputString.replace('owner:', '');
-                const query = firstTrim.replace('/', '');
+                const query = firstTrim.replace('/', '').toLowerCase();
                 const foundSingleUser = friendsArray.filter((user) => user && user.login === query)
                 const arrayRepositories: Repository[] = foundSingleUser[0]?.repositories?.nodes || [];
                 setRepositoriesToShow(arrayRepositories)

@@ -71,7 +71,7 @@ export const LandingPage = () => {
             color="gray"
             styles="text-center"
           />
-          <div className="flex flex-col md:flex-row justify-center items-center gap-1">
+          <div className="flex flex-col flex-wrap md:flex-row justify-center items-center gap-1">
             <Typography
               text="If you don't, please click"
               type="p3"
