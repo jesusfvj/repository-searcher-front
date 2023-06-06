@@ -36,7 +36,7 @@ export const TitleSortedRepositories = () => {
 
   return (
     <div className="w-full h-fit flex justify-between items-center border-b-[0.1rem] border-[#1f2328] py-6">
-      <div className="flex flex-col md:flex-row gap-1 justify-start items-center">
+      <div className="flex flex-col md:flex-row gap-1 justify-start items-start md:items-center">
         <div className="flex gap-1 justify-start items-center">
           <Typography
             type="p4"
