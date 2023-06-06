@@ -32,7 +32,7 @@ This is a frontend application built with React, Vite, TypeScript, and Tailwind 
 
 ### - Search and view profiles of followers and following users
 
--In the input, type "owner:" to show users. Tyoping "owner: + your username" will display and filter the repositories.
+-In the input up in the left corner, type "owner:" to show users. Typing "owner: + username" will display and filter the repositories.
 
  <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/82e68b35-e9ba-459b-884f-3bbe6c6c8bd3" alt="Image" width="70%">
  <img src="https://github.com/jesusfvj/repository-searcher-front/assets/119491399/64e8d006-97a3-4be3-89cc-5114af2373d3" alt="Image" width="70%">
