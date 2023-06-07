@@ -15,6 +15,7 @@ export const getUserDataAPI = async () => {
     const response = await axios.get(`${BASE_URL_USER}/getUserData`, {
       headers: {
         "x-token": window.localStorage.getItem("token"),
+        "login": window.localStorage.getItem("login"),
       }
     });
     return response.data;

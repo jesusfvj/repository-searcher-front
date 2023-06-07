@@ -30,7 +30,9 @@ export const UserProvider = ({ children }: Props) => {
   const login = async (codeParam: string) => {
     const response = await getAccessTokenAPI(codeParam)
     if (response.ok) {
-      localStorage.setItem("token", response.data.token)
+      console.log(response)
+      localStorage.setItem("token", response.token)
+      localStorage.setItem("login", response.data.userData.login)
       dispatch({ type: types.login, payload: { userData: response.data.userData } });
     }
     return response
@@ -39,13 +41,14 @@ export const UserProvider = ({ children }: Props) => {
   const getUserDataContext = async () => {
     const response = await getUserDataAPI()
     if (response.ok) {
-      dispatch({ type: types.login, payload: { userData: response.userData.userData } });
+      dispatch({ type: types.login, payload: { userData: response.data.userData } });
     }
     return response
   }
 
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("login");
     dispatch({ type: types.logout });
     return true
   };
