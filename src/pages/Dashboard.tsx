@@ -28,6 +28,9 @@ export const Dashboard = () => {
           if (isExpired) {
             setIsExpired(true)
             navigate("/")
+          } else if (response.data === "no user") {
+            logout()
+            navigate("/")
           }
           setMessageErrorToaster("There was a problem retrieving your user.")
         }
