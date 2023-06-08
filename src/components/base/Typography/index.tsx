@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import "../../../index.css";
 
-interface Typography {
+export interface TypographyProps {
   text: string | ReactNode;
   type?: "title" | "subtitle" | "veryImportant" | "important" | "big" | "p0" | "p1" | "p2" | "p5" | "p3" | "p4";
   color?: "black" | "white" | "gray" | "blue" | "danger" | "button";
@@ -17,7 +17,7 @@ export const Typography = ({
   family = "system",
   styles = "",
   onClick
-}: Typography): JSX.Element => {
+}: TypographyProps): JSX.Element => {
 
   const types: Record<string, string> = {
     title: `text-xl sm:text-4xl font-bold`,

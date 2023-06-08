@@ -1,7 +1,7 @@
 import "../../../index.css"
 import { ReactNode } from "react";
 
-interface ButtonComponentProps {
+export interface ButtonComponentProps {
     text: string | ReactNode,
     size: "md" | "sm" | "xs",
     color: "gray" | "new",
