@@ -3,7 +3,11 @@ const BASE_URL_USER = import.meta.env.VITE_BASE_URL + "/user"
 
 export const getAccessTokenAPI = async (codeParam: string) => {
   try {
-    const response = await axios.get(`${BASE_URL_USER}/getAccessToken?code=${codeParam}`);
+    const response = await axios.get(`${BASE_URL_USER}/getAccessToken?code=${codeParam}`, {
+      headers: {
+        "login": window.localStorage.getItem("login"),
+      }
+    });
     return response.data;
   } catch (error) {
     return error
