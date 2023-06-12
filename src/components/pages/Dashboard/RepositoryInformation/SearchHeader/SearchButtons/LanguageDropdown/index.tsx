@@ -71,9 +71,6 @@ export const LanguageDropdown: React.FC<LanguageDropdownProps> = ({ setActiveDro
 
     return (
         <>
-            <div className="hidden md:flex fixed w-screen h-screen top-0 left-0"
-                onClick={() => setActiveDropdown("none")}></div>
-            <div className="hidden md:flex absolute -left-[12.5vw] top-9 flex-col w-[40vh] h-fit bg-[#161B22] border-[0.1rem] border-[#30363D] rounded-lg shadow-lg">
                 {arrayTitles.map((title, index) => {
                     return (
                         <>
@@ -113,7 +110,6 @@ export const LanguageDropdown: React.FC<LanguageDropdownProps> = ({ setActiveDro
                         </>
                     )
                 })}
-            </div>
         </>
     )
 }

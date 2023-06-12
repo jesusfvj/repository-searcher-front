@@ -7,9 +7,7 @@ import { useState } from "react"
 import { TypeDropdown } from "./TypeDropdown"
 import { LanguageDropdown } from "./LanguageDropdown"
 import { SortDropdown } from "./SortDropdown"
-import { SortDropdownResponsive } from "./SortDropdownResponsive"
-import { TypeDropdownResponsive } from "./TypeDropdownResponsive"
-import { LanguageDropdownResponsive } from "./LanguageDropdownResponsive"
+import { SearchButtonComponents } from "./SearchButtonComponents"
 
 export const SearchButtons = () => {
     const [activeDropdown, setActiveDropdown] = useState<string>("none")
@@ -32,7 +30,7 @@ export const SearchButtons = () => {
                             styles={`${activeDropdown === "type" && 'border-[#8B949E]'}`}
                             onClick={() => setActiveDropdown("type")} />
                         {activeDropdown === "type" &&
-                            <TypeDropdown setActiveDropdown={setActiveDropdown} />
+                            <SearchButtonComponents activeDropdown={activeDropdown} setActiveDropdown={setActiveDropdown} />
                         }
                     </div>
                     <div className="relative">
@@ -49,7 +47,7 @@ export const SearchButtons = () => {
                             styles={`${activeDropdown === "language" && 'border-[#8B949E]'}`}
                             onClick={() => setActiveDropdown("language")} />
                         {activeDropdown === "language" &&
-                            <LanguageDropdown setActiveDropdown={setActiveDropdown} />
+                            <SearchButtonComponents activeDropdown={activeDropdown} setActiveDropdown={setActiveDropdown} />
                         }
                     </div>
                     <div className="relative">
@@ -66,7 +64,7 @@ export const SearchButtons = () => {
                             styles={`${activeDropdown === "sort" && 'border-[#8B949E]'}`}
                             onClick={() => setActiveDropdown("sort")} />
                         {activeDropdown === "sort" &&
-                            <SortDropdown setActiveDropdown={setActiveDropdown} />
+                            <SearchButtonComponents activeDropdown={activeDropdown} setActiveDropdown={setActiveDropdown} />
                         }
                     </div>
                 </div>
@@ -82,16 +80,18 @@ export const SearchButtons = () => {
                     onClick={() => setShowWorkInProgress(true)} />
             </div>
             <div className="md:hidden w-full">
-                {activeDropdown === "type" &&
-                    <TypeDropdownResponsive setActiveDropdown={setActiveDropdown}/>
-                }
-                {activeDropdown === "language" &&
-                    <LanguageDropdownResponsive setActiveDropdown={setActiveDropdown} />
-                }
-                {activeDropdown === "sort" &&
-                    <SortDropdownResponsive setActiveDropdown={setActiveDropdown} />
-                }
+                <div className="w-[95vw] flex flex-col h-fit bg-[#161B22] border-[0.1rem] border-[#30363D] rounded-md mt-3">
+                    {activeDropdown === "type" &&
+                        <TypeDropdown setActiveDropdown={setActiveDropdown} />
+                    }
+                    {activeDropdown === "language" &&
+                        <LanguageDropdown setActiveDropdown={setActiveDropdown} />
+                    }
+                    {activeDropdown === "sort" &&
+                        <SortDropdown setActiveDropdown={setActiveDropdown} />
+                    }
+                </div>
             </div>
-        </div>
+        </div >
     )
 }
